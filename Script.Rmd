@@ -1,5 +1,5 @@
 ---
-title: "Something fascinating right?"
+title: "Something fascinating right? GOD"
 author: "Jenny Bryan"
 date: "2022-05-10"
 output: github_document
