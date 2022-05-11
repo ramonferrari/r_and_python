@@ -1,10 +1,20 @@
-Something fascinating right?
+Something fascinating right? GOD
 ================
 Jenny Bryan
 2022-05-10
 
 ``` r
 ## insert your brilliant WORKING code here
+```
+
+## Comentando o código
+
+``` r
+# Use # para comentar o código
+```
+
+``` python
+# O mesmo # em Python
 ```
 
 ## R Markdown
