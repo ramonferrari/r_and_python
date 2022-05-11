@@ -2,7 +2,9 @@
 title: "Script_Ramon"
 author: "Ramon Moreno Ferrari"
 date: '2022-05-11'
-output: github_document
+output: 
+  html_document: 
+    keep_md: yes
 ---
 
 ```{r setup, include=FALSE}
