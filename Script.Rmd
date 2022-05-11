@@ -1,8 +1,11 @@
+<<<<<<< HEAD
 ---
 output: 
   html_document: 
     keep_md: yes
 ---
+=======
+>>>>>>> 7d3c98088de22eeaeb3316df4cfb157bff38c65f
 ```{r, eval=TRUE}
 ## insert your brilliant WORKING code here
 ```
