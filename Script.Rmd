@@ -1,9 +1,11 @@
-
 ---
 output: 
   html_document: 
     keep_md: yes
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 ```{r, eval=TRUE}
 ## insert your brilliant WORKING code here
@@ -14,10 +16,6 @@ library(tidyverse)
 library(knitr)
 library(showtext)
 font_add_google(name = "Roboto Slab",family = "Roboto") # https://fonts.google.com/?sort=popularity
-```
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## R Markdown
