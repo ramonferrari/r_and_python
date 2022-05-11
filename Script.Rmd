@@ -1,32 +1,54 @@
 ---
-title: "Script_Ramon"
+fontfamily: lmodern #https://tug.org/FontCatalogue/seriffonts.html
+title: "Laboratório de Matemática e Física"
 author: "Ramon Moreno Ferrari"
-date: '2022-05-11'
+date: '10/04/2022'
+header-includes:
+  - \usepackage{graphicx}
+  - \usepackage{fancyhdr}
+  - \usepackage[T1]{fontenc}
+  - \usepackage[default]{sourcesanspro}
+  - \usepackage{lmodern}
+  - \input{preamble}  
+  - \pagestyle{mystyle}
+  - \hypersetup{pageanchor=false}
 output: 
   html_document: 
     keep_md: yes
+    keep_tex: true
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-## AAAAAAAAAAAA
-## R Markdown
+&nbsp;&nbsp;
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+---
+fontsize: 12pt
+---
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r,warning=FALSE,message=FALSE,include=FALSE}
+library(tidyverse)
+library(knitr)
+library(showtext)
+font_add_google(name = "Roboto Slab",family = "Roboto") # https://fonts.google.com/?sort=popularity
 ```
 
-## Including Plots
+# Experimento I: Movimento Retilíneo Uniforme (MRUV)
 
-You can also embed plots, for example:
+## Item 01
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r 1_01, echo=FALSE}
+marcacoes <- c(0,18,36,54,72,90,108,126,144,162,180)
+marcacoes<- marcacoes/1000
+
+#t1<- c(0,0.04,0.0605,0.0857,0.1096,0.1324,0.1541,0.175,0.1994,0.2188,0.2376)
+t1<- c(0,0.0295,0.0564,0.0817,0.1056,0.1284,0.1501,0.171,0.1912,0.2106,0.2294)
+
+df <- data.frame(marcacoes,t1)
+showtext_auto()
+ggplot(df)+
+  geom_point(aes(x=t1,y=100*marcacoes),colour = "blue", size = 3)+
+  labs(x="Tempo (s)",y="Posição (cm)",title="Posição x Tempo")+
+  theme(text = element_text(family = "Roboto"))
 ```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
