@@ -1,7 +1,8 @@
 ---
-output: 
-  html_document: 
-    keep_md: yes
+title: "Something fascinating"
+author: "Jenny Bryan"
+date: "2022-05-10"
+output: github_document
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
