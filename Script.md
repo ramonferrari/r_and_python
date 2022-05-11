@@ -1,34 +1,42 @@
 ---
-fontfamily: lmodern #https://tug.org/FontCatalogue/seriffonts.html
-title: "Laboratório de Matemática e Física"
+title: "Script_Ramon"
 author: "Ramon Moreno Ferrari"
-date: '10/04/2022'
-header-includes:
-  - \usepackage{graphicx}
-  - \usepackage{fancyhdr}
-  - \usepackage[T1]{fontenc}
-  - \usepackage[default]{sourcesanspro}
-  - \usepackage{lmodern}
-  - \input{preamble}  
-  - \pagestyle{mystyle}
-  - \hypersetup{pageanchor=false}
+date: '2022-05-11'
 output: 
   html_document: 
     keep_md: yes
-    keep_tex: true
----
-
-
-&nbsp;&nbsp;
-
----
-fontsize: 12pt
 ---
 
 
 
-# Experimento I: Movimento Retilíneo Uniforme (MRUV)
 
-## Item 01
 
-![](Script_files/figure-html/1_01-1.png)<!-- -->
+## AAAAAAAAAAAA
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+```r
+summary(cars)
+```
+
+```
+##      speed           dist       
+##  Min.   : 4.0   Min.   :  2.00  
+##  1st Qu.:12.0   1st Qu.: 26.00  
+##  Median :15.0   Median : 36.00  
+##  Mean   :15.4   Mean   : 42.98  
+##  3rd Qu.:19.0   3rd Qu.: 56.00  
+##  Max.   :25.0   Max.   :120.00
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+![](Script_files/figure-html/pressure-1.png)<!-- -->
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
