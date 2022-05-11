@@ -2,16 +2,15 @@
 title: "Script_Ramon"
 author: "Ramon Moreno Ferrari"
 date: '2022-05-11'
-output: 
-  html_document: 
-    keep_md: yes
+output:
+  html_document:
+    keep_md: true
 ---
 
 
 
 
 
-## AAAAAAAAAAAA
 ## R Markdown
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
