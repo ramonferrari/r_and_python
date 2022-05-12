@@ -1,16 +1,12 @@
 ---
-title: "Something fascinating right? GOD"
-author: "Jenny Bryan"
-date: "2022-05-10"
+title: "Códigos em R e Python"
+author: "Ramon Moreno Ferrari, em "
+date: "`r format(Sys.time(), '%d/%m/%Y')`"
 output: github_document
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(reticulate)
-```
-
-```{r, eval=TRUE}
-## insert your brilliant WORKING code here
 ```
 
 ```{r,warning=FALSE,message=FALSE,include=FALSE}
@@ -21,7 +17,7 @@ font_add_google(name = "Roboto Slab",family = "Roboto") # https://fonts.google.c
 ```
 
 ## Comentando o código
-```{r class.source="bg-danger", class.output="bg-warning"}
+```{r}
 # Use # para comentar o código
 ```
 

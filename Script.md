@@ -1,11 +1,7 @@
-Something fascinating right? GOD
+Códigos em R e Python
 ================
-Jenny Bryan
-2022-05-10
-
-``` r
-## insert your brilliant WORKING code here
-```
+Ramon Moreno Ferrari, em
+12/05/2022
 
 ## Comentando o código
 
