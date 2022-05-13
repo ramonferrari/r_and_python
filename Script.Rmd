@@ -1,8 +1,24 @@
 ---
 title: "Códigos em R e Python"
-author: "Ramon Moreno Ferrari, em "
+author: "Ramon Moreno Ferrari em "
 date: "`r format(Sys.time(), '%d/%m/%Y')`"
-output: github_document
+output: github_document #output RMD
+# Para output PDF/Latex, comentar acima e descomentar abaixo:
+#
+#fontfamily: lmodern #https://tug.org/FontCatalogue/seriffonts.html
+#header-includes:
+#  - \usepackage{graphicx}
+#  - \usepackage{fancyhdr}
+#  - \usepackage[T1]{fontenc}
+#  - \usepackage[default]{sourcesanspro}
+#  - \usepackage{lmodern}
+#  - \input{preamble}  
+#  - \pagestyle{mystyle}
+#  - \hypersetup{pageanchor=false}
+#output: 
+#  pdf_document:
+#    keep_tex: true
+---
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -16,22 +32,43 @@ library(showtext)
 font_add_google(name = "Roboto Slab",family = "Roboto") # https://fonts.google.com/?sort=popularity
 ```
 
-## Comentando o código
+## O mais básico: comentando o código
+Use # para comentar o código:
 ```{r}
-# Use # para comentar o código
+# Isso é um comentário.
 ```
 
-```{python}
-# O mesmo # em Python
+O mesmo (#) em Python:
+```{python,warning=FALSE,message=FALSE}
+# Isso também é um comentário!
+
+# Que também é obtido por 3 aspas duplas! """
+# (Muito útil para comentar grandes blocos de código rapidamente)
 ```
-
-## R Markdown
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+## Atribuição
+No R, utilize = ou <- para atribuir o valor a uma variável.
 
 ```{r cars}
-summary(cars)
+df<-cars # o sinal de = também funciona!
+summary(df)
+```
+
+## Impressão de textos e variáveis
+Em R:
+```{r}
+print("oi tudo bem?")
+print(df$speed)
+```
+
+## Help-me!
+Em R, utilize a função help()
+```{r,eval=F}
+help(print)
+```
+
+O mesmo em Python:
+```{python}
+help(print)
 ```
 
 ## Including Plots
