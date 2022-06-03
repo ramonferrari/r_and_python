@@ -33,7 +33,7 @@ font_add_google(name = "Roboto Slab",family = "Roboto") # https://fonts.google.c
 ```
 
 ## O mais básico: comentando o código
-Use # para comentar o código:
+Use # para comentar o código:    
 ```{r}
 # Isso é um comentário.
 ```
