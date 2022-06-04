@@ -115,7 +115,7 @@ import pandas as pd # pacote para estruturar data frames
 from __future__ import print_function # retrocompatibilidade python2
 #!pip install xlrd
 #print('xlrd instalado!')
-df_can = pd.read_excel('https://s3-api.us-geo.objectstorage.softlayer.net/cf-courses-data/CognitiveClass/DV0101EN/labs/Data_Files/Canada.xlsx',sheet_name="Canada by Citizenship",skiprows=range(20),skipfooter=2, engine='openpyxl')
+df_can = pd.read_excel('https://github.com/ramonferrari/r_and_python/blob/main/Canada.xlsx?raw=true',sheet_name="Canada by Citizenship",skiprows=range(20),skipfooter=2, engine='openpyxl')
 df_can.head()
 ```
 
