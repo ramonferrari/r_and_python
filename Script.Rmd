@@ -90,6 +90,16 @@ plt.title("exemplo de plot")
 plt.show()
 ```
 
+```{python}
+import numpy as np # útil para computação científica em Python
+import pandas as pd # pacote para estruturar data frames
+from __future__ import print_function # retrocompatibilidade python2
+#!pip install xlrd
+#print('xlrd instalado!')
+df_can = pd.read_excel('https://ibm.box.com/shared/static/lw190pt9zpy5bd1ptyg2aw15awomz9pu.xlsx',sheet_name="Canada by Citizenship",skiprows=range(20),skip_footer=2)
+df_can.head()
+```
+
 ## Sobre Rmd
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
