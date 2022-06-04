@@ -46,7 +46,7 @@ O mesmo (#) em Python:
 # (Muito útil para comentar grandes blocos de código rapidamente)
 ```
 ## Atribuição
-No R, utilize *=* ou *<-* para atribuir o valor a uma variável.
+No R, utilize `=` ou `<-` para atribuir o valor a uma variável.
 
 ```{r cars}
 df<-cars # o sinal de = também funciona!
