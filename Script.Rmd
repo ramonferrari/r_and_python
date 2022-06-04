@@ -75,14 +75,14 @@ help(print)
 
 Os plots são incluídos no Rmd. No R, utilize plot() ou o package ggplot2.
 
-```{r pressure, echo=FALSE}
+```{r pressure}
 plot(pressure)
 ```
 
 Em Python, utilize a biblioteca matplotlib:
 ```{python}
-%matplotlib inline
 import matplotlib.pyplot as plt
+# %matplotlib inline se estivesse num Jupyter Notebook
 plt.plot(5,5,'o')
 plt.xlabel("eixo X")
 plt.ylabel("eixo Y")
@@ -90,6 +90,17 @@ plt.title("exemplo de plot")
 plt.show()
 ```
 
+## Importar uma planilha para o Pandas
+```{python}
+import numpy as np # útil para computação científica em Python
+import pandas as pd # pacote para estruturar data frames
+from __future__ import print_function # retrocompatibilidade python2
+#!pip install xlrd
+#print('xlrd instalado!')
+df_can = pd.read_excel('https://s3-api.us-geo.objectstorage.softlayer.net/cf-courses-data/CognitiveClass/DV0101EN/labs/Data_Files/Canada.xlsx',sheet_name="Canada by Citizenship",skiprows=range(20),skipfooter=2, engine='openpyxl')
+df_can.head()
+```
+
 ## Sobre Rmd
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Utilizar `echo = FALSE` no RMarkdown faz com que o código não apareça no output, apenas o resultado (um gráfico, por exemplo!).
 

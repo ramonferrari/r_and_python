@@ -1,7 +1,7 @@
 Códigos em R e Python
 ================
 Ramon Moreno Ferrari em
-03/06/2022
+04/06/2022
 
 ------------------------------------------------------------------------
 
@@ -84,11 +84,51 @@ help(print)
 
 ## Including Plots
 
-You can also embed plots, for example:
+Os plots são incluídos no Rmd. No R, utilize plot() ou o package
+ggplot2.
+
+``` r
+plot(pressure)
+```
 
 ![](Script_files/figure-gfm/pressure-1.png)<!-- -->
 
-Note that the `echo = FALSE` parameter was added to the code chunk to
-prevent printing of the R code that generated the plot.
+Em Python, utilize a biblioteca matplotlib:
 
-## Testando!
+``` python
+import matplotlib.pyplot as plt
+# %matplotlib inline se estivesse num Jupyter Notebook
+plt.plot(5,5,'o')
+plt.xlabel("eixo X")
+plt.ylabel("eixo Y")
+plt.title("exemplo de plot")
+plt.show()
+```
+
+![](Script_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+
+## Importar uma planilha para o Pandas
+
+``` python
+import numpy as np # útil para computação científica em Python
+import pandas as pd # pacote para estruturar data frames
+from __future__ import print_function # retrocompatibilidade python2
+#!pip install xlrd
+#print('xlrd instalado!')
+df_can = pd.read_excel('https://s3-api.us-geo.objectstorage.softlayer.net/cf-courses-data/CognitiveClass/DV0101EN/labs/Data_Files/Canada.xlsx',sheet_name="Canada by Citizenship",skiprows=range(20),skipfooter=2, engine='openpyxl')
+df_can.head()
+```
+
+    ##          Type    Coverage          OdName  AREA  ...  2010  2011  2012  2013
+    ## 0  Immigrants  Foreigners     Afghanistan   935  ...  1758  2203  2635  2004
+    ## 1  Immigrants  Foreigners         Albania   908  ...   561   539   620   603
+    ## 2  Immigrants  Foreigners         Algeria   903  ...  4752  4325  3774  4331
+    ## 3  Immigrants  Foreigners  American Samoa   909  ...     0     0     0     0
+    ## 4  Immigrants  Foreigners         Andorra   908  ...     0     0     1     1
+    ## 
+    ## [5 rows x 43 columns]
+
+## Sobre Rmd
+
+Utilizar `echo = FALSE` no RMarkdown faz com que o código não apareça no
+output, apenas o resultado (um gráfico, por exemplo!).
