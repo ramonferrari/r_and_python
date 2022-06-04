@@ -73,12 +73,23 @@ help(print)
 
 ## Including Plots
 
-You can also embed plots, for example:
+Os plots são incluídos no Rmd. No R, utilize plot() ou o package ggplot2.
 
 ```{r pressure, echo=FALSE}
 plot(pressure)
 ```
 
+Em Python, utilize a biblioteca matplotlib:
+```{python}
+%matplotlib inline
+import matplotlib.pyplot as plt
+plt.plot(5,5,'o')
+plt.xlabel("eixo X")
+plt.ylabel("eixo Y")
+plt.title("exemplo de plot")
+plt.show()
+```
+
+## Sobre Rmd
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
-## Testando!
