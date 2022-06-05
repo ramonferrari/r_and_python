@@ -106,7 +106,6 @@ list(df_can.columns)
 years=list(map(str,range(1980,2014)))
 years
 df_can.loc['Haiti']
-
 ```
 
 ## Sobre Rmd
