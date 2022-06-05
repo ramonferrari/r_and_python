@@ -100,12 +100,15 @@ from __future__ import print_function # retrocompatibilidade python2
 df_can = pd.read_excel('https://github.com/ramonferrari/r_and_python/blob/main/Script_files/Canada_new.xlsx?raw=true',sheet_name="Canada by Citizenship",skiprows=range(20),skipfooter=2, engine='openpyxl')
 df_can.head()
 #list(df_can.columns)
+df_can.columns = df_can.columns.astype(str)
 ```
 
 ```{python}
 years=list(map(str,range(1980,2014)))
 years_num = list(map(int,years))
-df_can.iloc[75,10:42].plot(kind='line')
+df_can['Soma']=df_can[years].sum(axis=1)
+df_can.head()
+df_can.loc[75,years].plot(kind='line')
 plt.xlabel("Anos")
 plt.ylabel("Número de imigrantes")
 plt.title("Imigração a partir do Haiti")

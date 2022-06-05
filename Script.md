@@ -130,9 +130,27 @@ df_can.head()
     ## [5 rows x 43 columns]
 
 ``` python
+df_can.columns = df_can.columns.astype(str)
+```
+
+``` python
 years=list(map(str,range(1980,2014)))
 years_num = list(map(int,years))
-df_can.iloc[75,10:42].plot(kind='line')
+df_can['Soma']=df_can[years].sum(axis=1)
+df_can.head()
+```
+
+    ##          Type    Coverage          OdName  AREA  ...  2011  2012  2013   Soma
+    ## 0  Immigrants  Foreigners     Afghanistan   935  ...  2203  2635  2004  58639
+    ## 1  Immigrants  Foreigners         Albania   908  ...   539   620   603  15699
+    ## 2  Immigrants  Foreigners         Algeria   903  ...  4325  3774  4331  69439
+    ## 3  Immigrants  Foreigners  American Samoa   909  ...     0     0     0      6
+    ## 4  Immigrants  Foreigners         Andorra   908  ...     0     1     1     15
+    ## 
+    ## [5 rows x 44 columns]
+
+``` python
+df_can.loc[75,years].plot(kind='line')
 plt.xlabel("Anos")
 plt.ylabel("Número de imigrantes")
 plt.title("Imigração a partir do Haiti")
