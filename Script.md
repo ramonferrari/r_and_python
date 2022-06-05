@@ -189,11 +189,28 @@ df_top5=df_top5[years].transpose()
 df_top5.plot(kind='area')
 plt.xlabel("Anos")
 plt.ylabel("Número de imigrantes")
-plt.title("Top 5 paises em imigracao")
+plt.title("Top 5 países em imigração")
 plt.show()
 ```
 
 ![](Script_files/figure-gfm/unnamed-chunk-11-5.png)<!-- -->
+
+# Histogram Plot
+
+``` python
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+
+df_can['2013'].plot(kind='hist')
+
+plt.title("Histograma de imigração de 195 países em 2013")
+plt.ylabel("Número de Paises")
+plt.xlabel("Número de imigrantes")
+
+plt.show()
+```
+
+![](Script_files/figure-gfm/unnamed-chunk-12-7.png)<!-- -->
 
 ## Sobre Rmd
 
