@@ -105,7 +105,12 @@ list(df_can.columns)
 ```{python}
 years=list(map(str,range(1980,2014)))
 years
-df_can.loc['Haiti']
+years_num = list(map(int,years))
+years_num
+df_can.iloc[75,10:42].plot(kind='line')
+plt.xlabel("Anos")
+plt.ylabel("Número de imigrantes")
+plt.title("Imigração a partir do Haiti")
 ```
 
 ## Sobre Rmd
