@@ -115,7 +115,7 @@ import pandas as pd # pacote para estruturar data frames
 from __future__ import print_function # retrocompatibilidade python2
 #!pip install xlrd
 #print('xlrd instalado!')
-df_can = pd.read_excel('https://github.com/ramonferrari/r_and_python/blob/main/Script_files/Canada.xlsx?raw=true',sheet_name="Canada by Citizenship",skiprows=range(20),skipfooter=2, engine='openpyxl')
+df_can = pd.read_excel('https://github.com/ramonferrari/r_and_python/blob/main/Script_files/Canada_new.xlsx?raw=true',sheet_name="Canada by Citizenship",skiprows=range(20),skipfooter=2, engine='openpyxl')
 df_can.head()
 ```
 
@@ -133,13 +133,6 @@ list(df_can.columns)
 ```
 
     ## ['Type', 'Coverage', 'OdName', 'AREA', 'AreaName', 'REG', 'RegName', 'DEV', 'DevName', 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013]
-
-``` python
-years=list(map(str,range(1980,2014)))
-years
-```
-
-    ## ['1980', '1981', '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013']
 
 ## Sobre Rmd
 
