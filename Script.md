@@ -245,6 +245,80 @@ plt.show()
 
 ![](Script_files/figure-gfm/unnamed-chunk-13-11.png)<!-- -->
 
+# Gráfico de pizza
+
+``` python
+df_can.rename(columns={"AreaName":"Continent"},inplace=True)
+df_continentes=df_can.groupby('Continent',axis=0).sum()
+df_continentes=df_continentes.drop(columns=['AREA', 'REG','DEV'])
+df_continentes
+```
+
+    ##                                   1980   1981   1982  ...    2012    2013     Soma
+    ## Continent                                             ...                         
+    ## Africa                            3951   4363   3819  ...   38083   38543   618948
+    ## Asia                             31025  34314  30214  ...  152218  155075  3317794
+    ## Europe                           39760  44802  42720  ...   29177   28691  1410947
+    ## Latin America and the Caribbean  13081  15215  16769  ...   27173   24950   765148
+    ## Northern America                  9378  10030   9074  ...    7892    8503   241142
+    ## Oceania                           1942   1839   1675  ...    1679    1775    55174
+    ## 
+    ## [6 rows x 35 columns]
+
+``` python
+df_continentes['Soma'].plot(kind='pie')
+plt.title("Imigração para o Canada por continente, de 1980 a 2013")
+plt.show()
+```
+
+![](Script_files/figure-gfm/unnamed-chunk-15-13.png)<!-- -->
+
+# Boxplot
+
+``` python
+df_japan=df_can.loc[['Japan'],years].transpose()
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+df_japan.plot(kind='box')
+
+plt.title("Boxplot de imigrantes japoneses para o Canadá entre 1980 e 2013")
+plt.ylabel("Número de Imigrantes")
+
+plt.show()
+```
+
+![](Script_files/figure-gfm/unnamed-chunk-16-15.png)<!-- -->
+
+# Gráficos de Dispersão
+
+``` python
+df_total=df_continentes.drop(columns=['Soma']).transpose()
+df_total = df_total.reset_index(level=0)
+df_total.rename(columns={"index":"Year"},inplace=True)
+df_total.index.names = ['Index']
+
+df_total['Total']=df_total.sum(axis=1)
+```
+
+    ## <string>:1: FutureWarning: Dropping of nuisance columns in DataFrame reductions (with 'numeric_only=None') is deprecated; in a future version this will raise TypeError.  Select only valid columns before calling the reduction.
+
+``` python
+df_total=df_total.drop(columns=['Africa','Europe','Latin America and the Caribbean','Northern America','Oceania','Asia'])
+
+marcacoes=columns=['1980','1990','2000','2010']
+df_total.plot(kind='scatter',x='Year',y='Total',xticks=marcacoes)
+
+plt.title("Imigração total para o Canada entre 1980 e 2013")
+plt.ylabel("Número de Imigrantes")
+plt.xlabel("Ano")
+
+plt.show()
+```
+
+![](Script_files/figure-gfm/unnamed-chunk-17-17.png)<!-- -->
+
+# Waffle chart
+
 ## Sobre Rmd
 
 Utilizar `echo = FALSE` no RMarkdown faz com que o código não apareça no
