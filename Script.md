@@ -159,6 +159,42 @@ plt.show()
 
 ![](Script_files/figure-gfm/unnamed-chunk-9-3.png)<!-- -->
 
+# Sorting e Transposing um data frame
+
+``` python
+df_can.rename(columns={"OdName":"Country"},inplace=True)
+df_can=df_can.set_index('Country')
+df_can.sort_values(['Soma'],ascending=False,axis=0,inplace=True)
+df_can.head()
+```
+
+    ##                                                           Type  ...    Soma
+    ## Country                                                         ...        
+    ## India                                               Immigrants  ...  691904
+    ## China                                               Immigrants  ...  659962
+    ## United Kingdom of Great Britain and Northern Ir...  Immigrants  ...  551500
+    ## Philippines                                         Immigrants  ...  511391
+    ## Pakistan                                            Immigrants  ...  241600
+    ## 
+    ## [5 rows x 43 columns]
+
+``` python
+df_top5=df_can.head()
+df_top5=df_top5[years].transpose()
+```
+
+# Area Plot
+
+``` python
+df_top5.plot(kind='area')
+plt.xlabel("Anos")
+plt.ylabel("Número de imigrantes")
+plt.title("Top 5 paises em imigracao")
+plt.show()
+```
+
+![](Script_files/figure-gfm/unnamed-chunk-11-5.png)<!-- -->
+
 ## Sobre Rmd
 
 Utilizar `echo = FALSE` no RMarkdown faz com que o código não apareça no

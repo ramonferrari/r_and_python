@@ -115,6 +115,25 @@ plt.title("Imigração a partir do Haiti")
 plt.show()
 ```
 
+# Sorting e Transposing um data frame
+```{python}
+df_can.rename(columns={"OdName":"Country"},inplace=True)
+df_can=df_can.set_index('Country')
+df_can.sort_values(['Soma'],ascending=False,axis=0,inplace=True)
+df_can.head()
+df_top5=df_can.head()
+df_top5=df_top5[years].transpose()
+```
+
+# Area Plot
+```{python}
+df_top5.plot(kind='area')
+plt.xlabel("Anos")
+plt.ylabel("Número de imigrantes")
+plt.title("Top 5 paises em imigracao")
+plt.show()
+```
+
 ## Sobre Rmd
 Utilizar `echo = FALSE` no RMarkdown faz com que o código não apareça no output, apenas o resultado (um gráfico, por exemplo!).
 
