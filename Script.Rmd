@@ -99,18 +99,17 @@ from __future__ import print_function # retrocompatibilidade python2
 #print('xlrd instalado!')
 df_can = pd.read_excel('https://github.com/ramonferrari/r_and_python/blob/main/Script_files/Canada_new.xlsx?raw=true',sheet_name="Canada by Citizenship",skiprows=range(20),skipfooter=2, engine='openpyxl')
 df_can.head()
-list(df_can.columns)
+#list(df_can.columns)
 ```
 
 ```{python}
 years=list(map(str,range(1980,2014)))
-years
 years_num = list(map(int,years))
-years_num
 df_can.iloc[75,10:42].plot(kind='line')
 plt.xlabel("Anos")
 plt.ylabel("Número de imigrantes")
 plt.title("Imigração a partir do Haiti")
+plt.show()
 ```
 
 ## Sobre Rmd
