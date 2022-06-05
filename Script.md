@@ -212,6 +212,24 @@ plt.show()
 
 ![](Script_files/figure-gfm/unnamed-chunk-12-7.png)<!-- -->
 
+``` python
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import numpy as np 
+
+count,bin_edges=np.histogram(df_can['2013'])
+
+df_can['2013'].plot(kind='hist',xticks=bin_edges)
+
+plt.title("Histograma de imigração de 195 países em 2013")
+plt.ylabel("Número de Paises")
+plt.xlabel("Número de imigrantes")
+
+plt.show()
+```
+
+![](Script_files/figure-gfm/unnamed-chunk-12-8.png)<!-- -->
+
 ## Sobre Rmd
 
 Utilizar `echo = FALSE` no RMarkdown faz com que o código não apareça no
