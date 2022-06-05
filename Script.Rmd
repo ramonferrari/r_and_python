@@ -162,6 +162,18 @@ plt.xlabel("Número de imigrantes")
 plt.show()
 ```
 
+# Gráfico de barras
+```{python}
+df_iceland=df_can.loc['Iceland',years]
+df_iceland.plot(kind='bar')
+
+plt.title("Imigração Islândia -> Canada de 1980 a 2013")
+plt.ylabel("Número de Imigrantes")
+plt.xlabel("Ano")
+
+plt.show()
+```
+
 ## Sobre Rmd
 Utilizar `echo = FALSE` no RMarkdown faz com que o código não apareça no output, apenas o resultado (um gráfico, por exemplo!).
 

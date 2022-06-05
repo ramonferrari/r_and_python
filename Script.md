@@ -230,6 +230,21 @@ plt.show()
 
 ![](Script_files/figure-gfm/unnamed-chunk-12-8.png)<!-- -->
 
+# Gráfico de barras
+
+``` python
+df_iceland=df_can.loc['Iceland',years]
+df_iceland.plot(kind='bar')
+
+plt.title("Imigração Islândia -> Canada de 1980 a 2013")
+plt.ylabel("Número de Imigrantes")
+plt.xlabel("Ano")
+
+plt.show()
+```
+
+![](Script_files/figure-gfm/unnamed-chunk-13-11.png)<!-- -->
+
 ## Sobre Rmd
 
 Utilizar `echo = FALSE` no RMarkdown faz com que o código não apareça no
