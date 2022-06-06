@@ -220,11 +220,22 @@ plt.xlabel("Ano")
 plt.show()
 ```
 
-# Waffle chart
-```{python}
+# Folium
+```{python,echo=FALSE}
+import folium
 
+world_map=folium.Map(location=[56.130, -106.35],zoom_start=3)
+world_map
+
+world_map=folium.Map(location=[56.130, -106.35],zoom_start=4,tiles='Stamen Toner')
+world_map
+
+world_map=folium.Map(location=[56.130, -106.35],zoom_start=4,tiles='Stamen Terrain')
+world_map
 ```
+Folium deve ser aberto no Jupyter!
 
+# Escrever
 ```{python}
 
 ```

@@ -317,7 +317,17 @@ plt.show()
 
 ![](Script_files/figure-gfm/unnamed-chunk-17-17.png)<!-- -->
 
-# Waffle chart
+# Folium
+
+    ## <folium.folium.Map object at 0x0000000065C08070>
+
+    ## <folium.folium.Map object at 0x0000000065E91E50>
+
+    ## <folium.folium.Map object at 0x0000000065BDEDC0>
+
+Pois fy
+
+# Escrever
 
 ## Sobre Rmd
 
