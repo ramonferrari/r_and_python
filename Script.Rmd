@@ -115,6 +115,92 @@ plt.title("Imigração a partir do Haiti")
 plt.show()
 ```
 
+# Lendo um CSV
+```{python}
+import pandas as pd
+url='https://github.com/ramonferrari/r_and_python/raw/main/Script_files/imports-85.data'
+df=pd.read_csv(url,header=None)
+# Para exportar, use df.to_csv(path)
+headers = ["symboling","normalized-losses","make","fuel-type","aspiration", "num-of-doors","body-style", "drive-wheels","engine-location","wheel-base", "length","width","height","curb-weight","engine-type", "num-of-cylinders", "engine-size","fuel-system","bore","stroke","compression-ratio","horsepower", "peak-rpm","city-mpg","highway-mpg","price"]
+df.columns=headers
+#df.tail(n)
+df.head()
+```
+
+# Entendendo o dataset
+```{python}
+df.dtypes
+df.describe()
+df.describe(include="all") # mostra ainda que tenham NaNs
+```
+
+# Lidando com dados faltantes
+Aparecem como NAs, ? ou 0.
+```{python,eval=F}
+df=df.dropna()
+df=df.dropna(axis=0) # remove a linha (da amostra!)
+df=df.dropna(axis=1) # remove a coluna inteira!
+df=df.dropna(subset=["price"],axis=0) # trata apenas olhando para determinada coluna
+df.dropna(subset=["price"],axis=0,inplace=True) # mesmo acima, ja substituindo o dataset df
+```
+
+```{python}
+# Substituia usando df.replace(antigo,novo)
+import numpy as np
+df["normalized-losses"]=df["normalized-losses"].replace("?",np.nan) # trocamos ? por NaN
+df['normalized-losses'] = df['normalized-losses'].astype(float) # convertermos de string para float
+media=df["normalized-losses"].mean() # calculamos a media
+media
+
+df["normalized-losses"].replace(np.nan,media)
+```
+
+# Acessando, calculando e renomeando colunas
+```{python}
+df["city-mpg"]
+```
+
+```{python}
+df["city-mpg"]=235/df["city-mpg"]
+```
+
+```{python}
+df.rename(columns={"city-mpg":"city-L/100km"},inplace=True)
+df["city-L/100km"]
+```
+
+# Normalização de datasets
+Seja dividindo pelo máximo, dividindo pelo (máximo - mínimo) após subtrair o mínimo, ou pelo desvio-padrão após retirar a média, precisaremos aprender a calcular:
+```{python,eval=F}
+df["length"]=df["length"]/df["length"].max()
+df["length"]=(df["length"]-df["length"].min())/(df["length"].max()-df["length"].min())
+df["length"]=(df["length"]-df["length"].mean())/df["length"].std()
+```
+
+# Binning (binagem) ou agrupamentos
+Parece bastante com os levels do R
+```{python}
+df["price"]=df["price"].replace("?",np.nan) # trocamos ? por NaN
+```
+
+# Tratamento de variáveis categóricas
+```{python}
+import pandas as pd
+pd.get_dummies(df['fuel-type'])
+df['price'] = df['price'].astype(float) # convertermos de string para float
+bins = np.linspace(df["price"].min(),df["price"].max(),4) # pega a amplitude e divide em 3 grupos a partir de 4 valores!
+group_names = ["Low","Medium","High"]
+df["price_binned"]=pd.cut(df["price"],bins,labels=group_names,include_lowest=True)
+df["price_binned"]
+```
+
+# Estatística Descritiva
+```{python}
+df.describe()
+df.value_counts()
+
+```
+
 # Sorting e Transposing um data frame
 ```{python}
 df_can.rename(columns={"OdName":"Country"},inplace=True)

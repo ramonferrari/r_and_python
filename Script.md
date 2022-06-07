@@ -1,7 +1,7 @@
 Códigos em R e Python
 ================
 Ramon Moreno Ferrari em
-05/06/2022
+06/06/2022
 
 ------------------------------------------------------------------------
 
@@ -159,6 +159,242 @@ plt.show()
 
 ![](Script_files/figure-gfm/unnamed-chunk-9-3.png)<!-- -->
 
+# Lendo um CSV
+
+``` python
+import pandas as pd
+url='https://github.com/ramonferrari/r_and_python/raw/main/Script_files/imports-85.data'
+df=pd.read_csv(url,header=None)
+# Para exportar, use df.to_csv(path)
+headers = ["symboling","normalized-losses","make","fuel-type","aspiration", "num-of-doors","body-style", "drive-wheels","engine-location","wheel-base", "length","width","height","curb-weight","engine-type", "num-of-cylinders", "engine-size","fuel-system","bore","stroke","compression-ratio","horsepower", "peak-rpm","city-mpg","highway-mpg","price"]
+df.columns=headers
+#df.tail(n)
+df.head()
+```
+
+    ##    symboling normalized-losses         make  ... city-mpg highway-mpg  price
+    ## 0          3                 ?  alfa-romero  ...       21          27  13495
+    ## 1          3                 ?  alfa-romero  ...       21          27  16500
+    ## 2          1                 ?  alfa-romero  ...       19          26  16500
+    ## 3          2               164         audi  ...       24          30  13950
+    ## 4          2               164         audi  ...       18          22  17450
+    ## 
+    ## [5 rows x 26 columns]
+
+# Entendendo o dataset
+
+``` python
+df.dtypes
+```
+
+    ## symboling              int64
+    ## normalized-losses     object
+    ## make                  object
+    ## fuel-type             object
+    ## aspiration            object
+    ## num-of-doors          object
+    ## body-style            object
+    ## drive-wheels          object
+    ## engine-location       object
+    ## wheel-base           float64
+    ## length               float64
+    ## width                float64
+    ## height               float64
+    ## curb-weight            int64
+    ## engine-type           object
+    ## num-of-cylinders      object
+    ## engine-size            int64
+    ## fuel-system           object
+    ## bore                  object
+    ## stroke                object
+    ## compression-ratio    float64
+    ## horsepower            object
+    ## peak-rpm              object
+    ## city-mpg               int64
+    ## highway-mpg            int64
+    ## price                 object
+    ## dtype: object
+
+``` python
+df.describe()
+```
+
+    ##         symboling  wheel-base  ...    city-mpg  highway-mpg
+    ## count  205.000000  205.000000  ...  205.000000   205.000000
+    ## mean     0.834146   98.756585  ...   25.219512    30.751220
+    ## std      1.245307    6.021776  ...    6.542142     6.886443
+    ## min     -2.000000   86.600000  ...   13.000000    16.000000
+    ## 25%      0.000000   94.500000  ...   19.000000    25.000000
+    ## 50%      1.000000   97.000000  ...   24.000000    30.000000
+    ## 75%      2.000000  102.400000  ...   30.000000    34.000000
+    ## max      3.000000  120.900000  ...   49.000000    54.000000
+    ## 
+    ## [8 rows x 10 columns]
+
+``` python
+df.describe(include="all") # mostra ainda que tenham NaNs
+```
+
+    ##          symboling normalized-losses    make  ...    city-mpg highway-mpg price
+    ## count   205.000000               205     205  ...  205.000000  205.000000   205
+    ## unique         NaN                52      22  ...         NaN         NaN   187
+    ## top            NaN                 ?  toyota  ...         NaN         NaN     ?
+    ## freq           NaN                41      32  ...         NaN         NaN     4
+    ## mean      0.834146               NaN     NaN  ...   25.219512   30.751220   NaN
+    ## std       1.245307               NaN     NaN  ...    6.542142    6.886443   NaN
+    ## min      -2.000000               NaN     NaN  ...   13.000000   16.000000   NaN
+    ## 25%       0.000000               NaN     NaN  ...   19.000000   25.000000   NaN
+    ## 50%       1.000000               NaN     NaN  ...   24.000000   30.000000   NaN
+    ## 75%       2.000000               NaN     NaN  ...   30.000000   34.000000   NaN
+    ## max       3.000000               NaN     NaN  ...   49.000000   54.000000   NaN
+    ## 
+    ## [11 rows x 26 columns]
+
+# Lidando com dados faltantes
+
+Aparecem como NAs, ? ou 0.
+
+``` python
+df=df.dropna()
+df=df.dropna(axis=0) # remove a linha (da amostra!)
+df=df.dropna(axis=1) # remove a coluna inteira!
+df=df.dropna(subset=["price"],axis=0) # trata apenas olhando para determinada coluna
+df.dropna(subset=["price"],axis=0,inplace=True) # mesmo acima, ja substituindo o dataset df
+```
+
+``` python
+# Substituia usando df.replace(antigo,novo)
+import numpy as np
+df["normalized-losses"]=df["normalized-losses"].replace("?",np.nan) # trocamos ? por NaN
+df['normalized-losses'] = df['normalized-losses'].astype(float) # convertermos de string para float
+media=df["normalized-losses"].mean() # calculamos a media
+media
+```
+
+    ## 122.0
+
+``` python
+df["normalized-losses"].replace(np.nan,media)
+```
+
+    ## 0      122.0
+    ## 1      122.0
+    ## 2      122.0
+    ## 3      164.0
+    ## 4      164.0
+    ##        ...  
+    ## 200     95.0
+    ## 201     95.0
+    ## 202     95.0
+    ## 203     95.0
+    ## 204     95.0
+    ## Name: normalized-losses, Length: 205, dtype: float64
+
+# Acessando, calculando e renomeando colunas
+
+``` python
+df["city-mpg"]
+```
+
+    ## 0      21
+    ## 1      21
+    ## 2      19
+    ## 3      24
+    ## 4      18
+    ##        ..
+    ## 200    23
+    ## 201    19
+    ## 202    18
+    ## 203    26
+    ## 204    19
+    ## Name: city-mpg, Length: 205, dtype: int64
+
+``` python
+df["city-mpg"]=235/df["city-mpg"]
+```
+
+``` python
+df.rename(columns={"city-mpg":"city-L/100km"},inplace=True)
+df["city-L/100km"]
+```
+
+    ## 0      11.190476
+    ## 1      11.190476
+    ## 2      12.368421
+    ## 3       9.791667
+    ## 4      13.055556
+    ##          ...    
+    ## 200    10.217391
+    ## 201    12.368421
+    ## 202    13.055556
+    ## 203     9.038462
+    ## 204    12.368421
+    ## Name: city-L/100km, Length: 205, dtype: float64
+
+# Normalização de datasets
+
+Seja dividindo pelo máximo, dividindo pelo (máximo - mínimo) após
+subtrair o mínimo, ou pelo desvio-padrão após retirar a média,
+precisaremos aprender a calcular:
+
+``` python
+df["length"]=df["length"]/df["length"].max()
+df["length"]=(df["length"]-df["length"].min())/(df["length"].max()-df["length"].min())
+df["length"]=(df["length"]-df["length"].mean())/df["length"].std()
+```
+
+# Binning (binagem) ou agrupamentos
+
+Parece bastante com os levels do R
+
+``` python
+df["price"]=df["price"].replace("?",np.nan) # trocamos ? por NaN
+```
+
+# Tratamento de variáveis categóricas
+
+``` python
+import pandas as pd
+pd.get_dummies(df['fuel-type'])
+```
+
+    ##      diesel  gas
+    ## 0         0    1
+    ## 1         0    1
+    ## 2         0    1
+    ## 3         0    1
+    ## 4         0    1
+    ## ..      ...  ...
+    ## 200       0    1
+    ## 201       0    1
+    ## 202       0    1
+    ## 203       1    0
+    ## 204       0    1
+    ## 
+    ## [205 rows x 2 columns]
+
+``` python
+df['price'] = df['price'].astype(float) # convertermos de string para float
+bins = np.linspace(df["price"].min(),df["price"].max(),4) # pega a amplitude e divide em 3 grupos a partir de 4 valores!
+group_names = ["Low","Medium","High"]
+df["price_binned"]=pd.cut(df["price"],bins,labels=group_names,include_lowest=True)
+df["price_binned"]
+```
+
+    ## 0         Low
+    ## 1         Low
+    ## 2         Low
+    ## 3         Low
+    ## 4         Low
+    ##         ...  
+    ## 200       Low
+    ## 201    Medium
+    ## 202    Medium
+    ## 203    Medium
+    ## 204    Medium
+    ## Name: price_binned, Length: 205, dtype: category
+    ## Categories (3, object): ['Low' < 'Medium' < 'High']
+
 # Sorting e Transposing um data frame
 
 ``` python
@@ -193,7 +429,7 @@ plt.title("Top 5 países em imigração")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-11-5.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-21-5.png)<!-- -->
 
 # Histogram Plot
 
@@ -210,7 +446,7 @@ plt.xlabel("Número de imigrantes")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-12-7.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-22-7.png)<!-- -->
 
 ``` python
 import matplotlib as mpl
@@ -228,7 +464,7 @@ plt.xlabel("Número de imigrantes")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-12-8.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-22-8.png)<!-- -->
 
 # Gráfico de barras
 
@@ -243,7 +479,7 @@ plt.xlabel("Ano")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-13-11.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-23-11.png)<!-- -->
 
 # Gráfico de pizza
 
@@ -271,7 +507,7 @@ plt.title("Imigração para o Canada por continente, de 1980 a 2013")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-15-13.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-25-13.png)<!-- -->
 
 # Boxplot
 
@@ -287,7 +523,7 @@ plt.ylabel("Número de Imigrantes")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-16-15.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-26-15.png)<!-- -->
 
 # Gráficos de Dispersão
 
@@ -315,17 +551,17 @@ plt.xlabel("Ano")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-17-17.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-27-17.png)<!-- -->
 
 # Folium
 
-    ## <folium.folium.Map object at 0x0000000065C08070>
+    ## <folium.folium.Map object at 0x00000000660B4C70>
 
-    ## <folium.folium.Map object at 0x0000000065E91E50>
+    ## <folium.folium.Map object at 0x0000000065E0DAF0>
 
-    ## <folium.folium.Map object at 0x0000000065BDEDC0>
+    ## <folium.folium.Map object at 0x0000000065E0DF40>
 
-Pois fy
+Folium deve ser aberto no Jupyter!
 
 # Escrever
 
