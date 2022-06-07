@@ -196,9 +196,44 @@ df["price_binned"]
 
 # Estatística Descritiva
 ```{python}
-df.describe()
-df.value_counts()
+df["drive-wheels"].describe()
+df["drive-wheels"].value_counts() # cria uma nova serie com valores e contagem
+```
 
+```{python}
+import seaborn as sns
+sns.boxplot(x="drive-wheels",y="price",data=df)
+```
+
+```{python}
+import matplotlib.pyplot as plt
+x = df["price"]
+y = df["engine-size"]
+plt.scatter(x,y)
+plt.xlabel("Preço")
+plt.ylabel("Tamanho do motor")
+plt.title("Gráfico de Dispersão do Tamanho do Motor vs Preço")
+plt.show()
+```
+
+# Agrupando dados (categóricos)
+```{python}
+df_test=df[['drive-wheels','body-style','price']]
+df_group=df_test.groupby(['drive-wheels','body-style'],as_index=False).mean()
+df_test
+df_group
+```
+
+# Pivotando!
+```{python}
+df_pivot=df_group.pivot(index='drive-wheels',columns='body-style')
+df_pivot
+
+plt.pcolor(df_pivot,cmap='RdBu')
+plt.colorbar()
+plt.xlabel("drive-wheels")
+plt.ylabel("body-style")
+plt.show()
 ```
 
 # Sorting e Transposing um data frame

@@ -395,6 +395,120 @@ df["price_binned"]
     ## Name: price_binned, Length: 205, dtype: category
     ## Categories (3, object): ['Low' < 'Medium' < 'High']
 
+# Estatística Descritiva
+
+``` python
+df["drive-wheels"].describe()
+```
+
+    ## count     205
+    ## unique      3
+    ## top       fwd
+    ## freq      120
+    ## Name: drive-wheels, dtype: object
+
+``` python
+df["drive-wheels"].value_counts() # cria uma nova serie com valores e contagem
+```
+
+    ## fwd    120
+    ## rwd     76
+    ## 4wd      9
+    ## Name: drive-wheels, dtype: int64
+
+``` python
+import seaborn as sns
+sns.boxplot(x="drive-wheels",y="price",data=df)
+```
+
+![](Script_files/figure-gfm/unnamed-chunk-21-5.png)<!-- -->
+
+``` python
+import matplotlib.pyplot as plt
+x = df["price"]
+y = df["engine-size"]
+plt.scatter(x,y)
+plt.xlabel("Preço")
+plt.ylabel("Tamanho do motor")
+plt.title("Gráfico de Dispersão do Tamanho do Motor vs Preço")
+plt.show()
+```
+
+![](Script_files/figure-gfm/unnamed-chunk-22-7.png)<!-- -->
+
+# Agrupando dados (categóricos)
+
+``` python
+df_test=df[['drive-wheels','body-style','price']]
+df_group=df_test.groupby(['drive-wheels','body-style'],as_index=False).mean()
+df_test
+```
+
+    ##     drive-wheels   body-style    price
+    ## 0            rwd  convertible  13495.0
+    ## 1            rwd  convertible  16500.0
+    ## 2            rwd    hatchback  16500.0
+    ## 3            fwd        sedan  13950.0
+    ## 4            4wd        sedan  17450.0
+    ## ..           ...          ...      ...
+    ## 200          rwd        sedan  16845.0
+    ## 201          rwd        sedan  19045.0
+    ## 202          rwd        sedan  21485.0
+    ## 203          rwd        sedan  22470.0
+    ## 204          rwd        sedan  22625.0
+    ## 
+    ## [205 rows x 3 columns]
+
+``` python
+df_group
+```
+
+    ##    drive-wheels   body-style         price
+    ## 0           4wd    hatchback   7603.000000
+    ## 1           4wd        sedan  12647.333333
+    ## 2           4wd        wagon   9095.750000
+    ## 3           fwd  convertible  11595.000000
+    ## 4           fwd      hardtop   8249.000000
+    ## 5           fwd    hatchback   8396.387755
+    ## 6           fwd        sedan   9811.800000
+    ## 7           fwd        wagon   9997.333333
+    ## 8           rwd  convertible  23949.600000
+    ## 9           rwd      hardtop  24202.714286
+    ## 10          rwd    hatchback  14337.777778
+    ## 11          rwd        sedan  21711.833333
+    ## 12          rwd        wagon  16994.222222
+
+# Pivotando!
+
+``` python
+df_pivot=df_group.pivot(index='drive-wheels',columns='body-style')
+df_pivot
+```
+
+    ##                    price                ...                            
+    ## body-style   convertible       hardtop  ...         sedan         wagon
+    ## drive-wheels                            ...                            
+    ## 4wd                  NaN           NaN  ...  12647.333333   9095.750000
+    ## fwd              11595.0   8249.000000  ...   9811.800000   9997.333333
+    ## rwd              23949.6  24202.714286  ...  21711.833333  16994.222222
+    ## 
+    ## [3 rows x 5 columns]
+
+``` python
+plt.pcolor(df_pivot,cmap='RdBu')
+plt.colorbar()
+```
+
+    ## <matplotlib.colorbar.Colorbar object at 0x00000000638AA760>
+
+``` python
+plt.xlabel("drive-wheels")
+plt.ylabel("body-style")
+plt.show()
+```
+
+![](Script_files/figure-gfm/unnamed-chunk-24-9.png)<!-- -->
+
 # Sorting e Transposing um data frame
 
 ``` python
@@ -429,7 +543,7 @@ plt.title("Top 5 países em imigração")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-21-5.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-26-11.png)<!-- -->
 
 # Histogram Plot
 
@@ -446,7 +560,7 @@ plt.xlabel("Número de imigrantes")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-22-7.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-27-13.png)<!-- -->
 
 ``` python
 import matplotlib as mpl
@@ -464,7 +578,7 @@ plt.xlabel("Número de imigrantes")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-22-8.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-27-14.png)<!-- -->
 
 # Gráfico de barras
 
@@ -479,7 +593,7 @@ plt.xlabel("Ano")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-23-11.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-28-17.png)<!-- -->
 
 # Gráfico de pizza
 
@@ -507,7 +621,7 @@ plt.title("Imigração para o Canada por continente, de 1980 a 2013")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-25-13.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-30-19.png)<!-- -->
 
 # Boxplot
 
@@ -523,7 +637,7 @@ plt.ylabel("Número de Imigrantes")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-26-15.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-31-21.png)<!-- -->
 
 # Gráficos de Dispersão
 
@@ -551,15 +665,15 @@ plt.xlabel("Ano")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-27-17.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-32-23.png)<!-- -->
 
 # Folium
 
-    ## <folium.folium.Map object at 0x00000000660B4C70>
+    ## <folium.folium.Map object at 0x000000006572CA00>
 
-    ## <folium.folium.Map object at 0x0000000065E0DAF0>
+    ## <folium.folium.Map object at 0x00000000643E4CA0>
 
-    ## <folium.folium.Map object at 0x0000000065E0DF40>
+    ## <folium.folium.Map object at 0x00000000652CE040>
 
 Folium deve ser aberto no Jupyter!
 
