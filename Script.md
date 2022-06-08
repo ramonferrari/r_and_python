@@ -1,7 +1,7 @@
 Códigos em R e Python
 ================
 Ramon Moreno Ferrari em
-07/06/2022
+08/06/2022
 
 ------------------------------------------------------------------------
 
@@ -57,6 +57,98 @@ summary(df)
     ##  Mean   :15.4   Mean   : 42.98  
     ##  3rd Qu.:19.0   3rd Qu.: 56.00  
     ##  Max.   :25.0   Max.   :120.00
+
+## Operações com strings
+
+Atribuição múltipla é possível:
+
+``` python
+filho1, filho2, filho3 = "Doug", 'Oliver', 'Savana' # Podemos usar aspas simples ou duplas!
+print(filho3)
+```
+
+    ## Savana
+
+``` python
+meus_filhos = "Meus filhos são: " + filho1 + ", " + filho2 + " e " + filho3 + "!"
+print(meus_filhos)
+```
+
+    ## Meus filhos são: Doug, Oliver e Savana!
+
+## Indexação e Slicing
+
+``` python
+filho1[0] # em Python, indexação começa pelo zero
+```
+
+    ## 'D'
+
+``` python
+filho1[1]
+```
+
+    ## 'o'
+
+``` python
+filho1[1:] # exclusivo, mas indiquei o 1
+```
+
+    ## 'oug'
+
+``` python
+filho2[:2] # exclusivo
+```
+
+    ## 'Ol'
+
+``` python
+filho1[-1] # lendo de tras pra frente
+```
+
+    ## 'g'
+
+``` python
+filho2[:-1] # lendo de tras pra frente, exclusivo!
+```
+
+    ## 'Olive'
+
+``` python
+filho3[::2] # pulando dois, começando do zero! 
+```
+
+    ## 'Svn'
+
+``` python
+filho3[::-2] # pulando dois, de trás pra frente!
+```
+
+    ## 'aaa'
+
+A string é imutável, você não consegue mudar apenas um caractere:
+
+``` python
+filho1[1]=G # não, não vai dar Goug!
+```
+
+Se você quiser Goug, vai alterar a variável toda:
+
+``` python
+filho1="G"+filho1[1:]
+filho1
+```
+
+    ## 'Goug'
+
+Operações são possíveis!
+
+``` python
+filho1="D"+filho1[1:]
+filho1*3
+```
+
+    ## 'DougDougDoug'
 
 ## Números e descobrir tipo da variável
 
@@ -132,6 +224,19 @@ No Python, temos dois tipos principais: inteiro e real.
 
     ## 9.8596
 
+## Atribuir operando
+
+``` python
+z=10
+z+=10
+z-=10
+z*=10
+z/=10
+z%=10
+z**=10
+z//=10
+```
+
 ## Operações lógicas
 
 ``` python
@@ -169,6 +274,24 @@ No Python, temos dois tipos principais: inteiro e real.
 ```
 
     ## False
+
+``` python
+3.14 == 2 and 3.14 != 2
+```
+
+    ## False
+
+``` python
+3.14 == 2 or 3.14 != 2
+```
+
+    ## True
+
+``` python
+not(3.14 == 2 and 3.14 != 2)
+```
+
+    ## True
 
 ## Impressão de textos e variáveis
 
@@ -236,7 +359,7 @@ plt.title("exemplo de plot")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
 
 ## Importar uma planilha para o Pandas
 
@@ -288,7 +411,7 @@ plt.title("Imigração a partir do Haiti")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-13-3.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-20-3.png)<!-- -->
 
 # Lendo um CSV
 
@@ -552,7 +675,7 @@ import seaborn as sns
 sns.boxplot(x="drive-wheels",y="price",data=df)
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-25-5.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-32-5.png)<!-- -->
 
 ``` python
 import matplotlib.pyplot as plt
@@ -565,7 +688,7 @@ plt.title("Gráfico de Dispersão do Tamanho do Motor vs Preço")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-26-7.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-33-7.png)<!-- -->
 
 # Agrupando dados (categóricos)
 
@@ -630,7 +753,7 @@ plt.pcolor(df_pivot,cmap='RdBu')
 plt.colorbar()
 ```
 
-    ## <matplotlib.colorbar.Colorbar object at 0x0000000066E29DC0>
+    ## <matplotlib.colorbar.Colorbar object at 0x000000005F652C40>
 
 ``` python
 plt.xlabel("drive-wheels")
@@ -638,7 +761,7 @@ plt.ylabel("body-style")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-28-9.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-35-9.png)<!-- -->
 
 # Sorting e Transposing um data frame
 
@@ -674,7 +797,7 @@ plt.title("Top 5 países em imigração")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-30-11.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-37-11.png)<!-- -->
 
 # Histogram Plot
 
@@ -691,7 +814,7 @@ plt.xlabel("Número de imigrantes")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-31-13.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-38-13.png)<!-- -->
 
 ``` python
 import matplotlib as mpl
@@ -709,7 +832,7 @@ plt.xlabel("Número de imigrantes")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-31-14.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-38-14.png)<!-- -->
 
 # Gráfico de barras
 
@@ -724,7 +847,7 @@ plt.xlabel("Ano")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-32-17.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-39-17.png)<!-- -->
 
 # Gráfico de pizza
 
@@ -752,7 +875,7 @@ plt.title("Imigração para o Canada por continente, de 1980 a 2013")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-34-19.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-41-19.png)<!-- -->
 
 # Boxplot
 
@@ -768,7 +891,7 @@ plt.ylabel("Número de Imigrantes")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-35-21.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-42-21.png)<!-- -->
 
 # Gráficos de Dispersão
 
@@ -796,15 +919,15 @@ plt.xlabel("Ano")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-36-23.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-43-23.png)<!-- -->
 
 # Folium
 
-    ## <folium.folium.Map object at 0x0000000067DF4100>
+    ## <folium.folium.Map object at 0x0000000061B1D6A0>
 
-    ## <folium.folium.Map object at 0x0000000067DFB640>
+    ## <folium.folium.Map object at 0x000000005F652880>
 
-    ## <folium.folium.Map object at 0x000000006A268A60>
+    ## <folium.folium.Map object at 0x000000006111E670>
 
 Folium deve ser aberto no Jupyter!
 

@@ -64,6 +64,48 @@ df<-cars # o sinal de = também funciona!
 summary(df)
 ```
 
+## Operações com strings
+Atribuição múltipla é possível:
+```{python}
+filho1, filho2, filho3 = "Doug", 'Oliver', 'Savana' # Podemos usar aspas simples ou duplas!
+print(filho3)
+meus_filhos = "Meus filhos são: " + filho1 + ", " + filho2 + " e " + filho3 + "!"
+print(meus_filhos)
+```
+
+## Indexação e Slicing
+```{python}
+filho1[0] # em Python, indexação começa pelo zero
+filho1[1]
+```
+
+```{python}
+filho1[1:] # exclusivo, mas indiquei o 1
+filho2[:2] # exclusivo
+filho1[-1] # lendo de tras pra frente
+filho2[:-1] # lendo de tras pra frente, exclusivo!
+filho3[::2] # pulando dois, começando do zero! 
+filho3[::-2] # pulando dois, de trás pra frente!
+```
+
+A string é imutável, você não consegue mudar apenas um caractere:
+```{python,eval=F}
+filho1[1]=G # não, não vai dar Goug!
+```
+
+Se você quiser Goug, vai alterar a variável toda:
+```{python}
+filho1="G"+filho1[1:]
+filho1
+```
+
+Operações são possíveis!
+```{python}
+filho1="D"+filho1[1:]
+filho1*3
+```
+
+
 ## Números e descobrir tipo da variável
 No Python, temos dois tipos principais: inteiro e real.
 ```{python}
@@ -84,6 +126,18 @@ No Python, temos dois tipos principais: inteiro e real.
 3.14 ** 2 # potenciação
 ```
 
+## Atribuir operando
+```{python}
+z=10
+z+=10
+z-=10
+z*=10
+z/=10
+z%=10
+z**=10
+z//=10
+```
+
 ## Operações lógicas
 ```{python}
 3.14 == 2 # igualdade
@@ -92,6 +146,10 @@ No Python, temos dois tipos principais: inteiro e real.
 3.14 > 2 # maior que
 3.14 <= 2 # menor ou igual que
 3.14 < 2 # menor que
+
+3.14 == 2 and 3.14 != 2
+3.14 == 2 or 3.14 != 2
+not(3.14 == 2 and 3.14 != 2)
 ```
 
 ## Impressão de textos e variáveis
