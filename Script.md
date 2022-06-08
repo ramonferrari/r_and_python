@@ -1,7 +1,7 @@
 Códigos em R e Python
 ================
 Ramon Moreno Ferrari em
-06/06/2022
+07/06/2022
 
 ------------------------------------------------------------------------
 
@@ -22,6 +22,25 @@ O mesmo (#) em Python:
 # (Muito útil para comentar grandes blocos de código rapidamente)
 ```
 
+## Indentação ou recuo
+
+Indentacao é muito importante em Python.
+
+Utilize TAB ou 4 espaços
+
+``` python
+print("nivel 1") # nível 1
+```
+
+    ## nivel 1
+
+``` python
+if(True):
+  print("nivel 2") # nível 2
+```
+
+    ## nivel 2
+
 ## Atribuição
 
 No R, utilize `=` ou `<-` para atribuir o valor a uma variável.
@@ -38,6 +57,118 @@ summary(df)
     ##  Mean   :15.4   Mean   : 42.98  
     ##  3rd Qu.:19.0   3rd Qu.: 56.00  
     ##  Max.   :25.0   Max.   :120.00
+
+## Números e descobrir tipo da variável
+
+No Python, temos dois tipos principais: inteiro e real.
+
+``` python
+type(2)
+```
+
+    ## <class 'int'>
+
+``` python
+type(3.14)
+```
+
+    ## <class 'float'>
+
+``` python
+float(2)
+```
+
+    ## 2.0
+
+``` python
+int(3.14)
+```
+
+    ## 3
+
+## Operações com números
+
+No Python, temos dois tipos principais: inteiro e real.
+
+``` python
+2+3.14 # soma
+```
+
+    ## 5.140000000000001
+
+``` python
+3.14-2 #subtração
+```
+
+    ## 1.1400000000000001
+
+``` python
+2*3.14 # multiplicação
+```
+
+    ## 6.28
+
+``` python
+3.14/2 # divisão
+```
+
+    ## 1.57
+
+``` python
+3.14//2 # quociente da divisão
+```
+
+    ## 1.0
+
+``` python
+3.14 % 2 # resto da divisão
+```
+
+    ## 1.1400000000000001
+
+``` python
+3.14 ** 2 # potenciação
+```
+
+    ## 9.8596
+
+## Operações lógicas
+
+``` python
+3.14 == 2 # igualdade
+```
+
+    ## False
+
+``` python
+3.14 != 2 # não igual
+```
+
+    ## True
+
+``` python
+3.14 >= 2 # maior ou igual que
+```
+
+    ## True
+
+``` python
+3.14 > 2 # maior que
+```
+
+    ## True
+
+``` python
+3.14 <= 2 # menor ou igual que
+```
+
+    ## False
+
+``` python
+3.14 < 2 # menor que
+```
+
+    ## False
 
 ## Impressão de textos e variáveis
 
@@ -105,7 +236,7 @@ plt.title("exemplo de plot")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
 ## Importar uma planilha para o Pandas
 
@@ -157,7 +288,7 @@ plt.title("Imigração a partir do Haiti")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-9-3.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-13-3.png)<!-- -->
 
 # Lendo um CSV
 
@@ -421,7 +552,7 @@ import seaborn as sns
 sns.boxplot(x="drive-wheels",y="price",data=df)
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-21-5.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-25-5.png)<!-- -->
 
 ``` python
 import matplotlib.pyplot as plt
@@ -434,7 +565,7 @@ plt.title("Gráfico de Dispersão do Tamanho do Motor vs Preço")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-22-7.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-26-7.png)<!-- -->
 
 # Agrupando dados (categóricos)
 
@@ -499,7 +630,7 @@ plt.pcolor(df_pivot,cmap='RdBu')
 plt.colorbar()
 ```
 
-    ## <matplotlib.colorbar.Colorbar object at 0x00000000638AA760>
+    ## <matplotlib.colorbar.Colorbar object at 0x0000000066E29DC0>
 
 ``` python
 plt.xlabel("drive-wheels")
@@ -507,7 +638,7 @@ plt.ylabel("body-style")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-24-9.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-28-9.png)<!-- -->
 
 # Sorting e Transposing um data frame
 
@@ -543,7 +674,7 @@ plt.title("Top 5 países em imigração")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-26-11.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-30-11.png)<!-- -->
 
 # Histogram Plot
 
@@ -560,7 +691,7 @@ plt.xlabel("Número de imigrantes")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-27-13.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-31-13.png)<!-- -->
 
 ``` python
 import matplotlib as mpl
@@ -578,7 +709,7 @@ plt.xlabel("Número de imigrantes")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-27-14.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-31-14.png)<!-- -->
 
 # Gráfico de barras
 
@@ -593,7 +724,7 @@ plt.xlabel("Ano")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-28-17.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-32-17.png)<!-- -->
 
 # Gráfico de pizza
 
@@ -621,7 +752,7 @@ plt.title("Imigração para o Canada por continente, de 1980 a 2013")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-30-19.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-34-19.png)<!-- -->
 
 # Boxplot
 
@@ -637,7 +768,7 @@ plt.ylabel("Número de Imigrantes")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-31-21.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-35-21.png)<!-- -->
 
 # Gráficos de Dispersão
 
@@ -665,15 +796,15 @@ plt.xlabel("Ano")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-32-23.png)<!-- -->
+![](Script_files/figure-gfm/unnamed-chunk-36-23.png)<!-- -->
 
 # Folium
 
-    ## <folium.folium.Map object at 0x000000006572CA00>
+    ## <folium.folium.Map object at 0x0000000067DF4100>
 
-    ## <folium.folium.Map object at 0x00000000643E4CA0>
+    ## <folium.folium.Map object at 0x0000000067DFB640>
 
-    ## <folium.folium.Map object at 0x00000000652CE040>
+    ## <folium.folium.Map object at 0x000000006A268A60>
 
 Folium deve ser aberto no Jupyter!
 

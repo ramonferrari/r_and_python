@@ -45,12 +45,53 @@ O mesmo (#) em Python:
 # Que também é obtido por 3 aspas duplas! """
 # (Muito útil para comentar grandes blocos de código rapidamente)
 ```
+
+## Indentação ou recuo
+Indentacao é muito importante em Python.
+
+Utilize TAB ou 4 espaços
+```{python}
+print("nivel 1") # nível 1
+if(True):
+  print("nivel 2") # nível 2
+```
+
 ## Atribuição
 No R, utilize `=` ou `<-` para atribuir o valor a uma variável.
 
 ```{r cars}
 df<-cars # o sinal de = também funciona!
 summary(df)
+```
+
+## Números e descobrir tipo da variável
+No Python, temos dois tipos principais: inteiro e real.
+```{python}
+type(2)
+type(3.14)
+float(2)
+int(3.14)
+```
+## Operações com números
+No Python, temos dois tipos principais: inteiro e real.
+```{python}
+2+3.14 # soma
+3.14-2 #subtração
+2*3.14 # multiplicação
+3.14/2 # divisão
+3.14//2 # quociente da divisão
+3.14 % 2 # resto da divisão
+3.14 ** 2 # potenciação
+```
+
+## Operações lógicas
+```{python}
+3.14 == 2 # igualdade
+3.14 != 2 # não igual
+3.14 >= 2 # maior ou igual que
+3.14 > 2 # maior que
+3.14 <= 2 # menor ou igual que
+3.14 < 2 # menor que
 ```
 
 ## Impressão de textos e variáveis
