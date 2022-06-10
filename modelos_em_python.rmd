@@ -1,12 +1,35 @@
 ---
-title: "modelos_em_python.rmd"
-author: "Ramon Moreno Ferrari"
-date: '2022-06-10'
-output: html_document
+title: "Desenvolvimento de Modelos em Python"
+author: "Ramon Moreno Ferrari em "
+date: "`r format(Sys.time(), '%d/%m/%Y')`"
+output: github_document #output RMD
+# Para output PDF/Latex, comentar acima e descomentar abaixo:
+#
+#fontfamily: lmodern #https://tug.org/FontCatalogue/seriffonts.html
+#header-includes:
+#  - \usepackage{graphicx}
+#  - \usepackage{fancyhdr}
+#  - \usepackage[T1]{fontenc}
+#  - \usepackage[default]{sourcesanspro}
+#  - \usepackage{lmodern}
+#  - \input{preamble}  
+#  - \pagestyle{mystyle}
+#  - \hypersetup{pageanchor=false}
+#output: 
+#  pdf_document:
+#    keep_tex: true
 ---
-
+---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(reticulate)
+```
+
+```{r,warning=FALSE,message=FALSE,include=FALSE}
+library(tidyverse)
+library(knitr)
+library(showtext)
+font_add_google(name = "Roboto Slab",family = "Roboto") # https://fonts.google.com/?sort=popularity
 ```
 
 ## R Markdown
