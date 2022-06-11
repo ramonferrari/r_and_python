@@ -32,22 +32,22 @@ library(showtext)
 font_add_google(name = "Roboto Slab",family = "Roboto") # https://fonts.google.com/?sort=popularity
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+## Baixando o dado
+```{python}
+import pandas as pd
+import numpy as np
+url='https://raw.githubusercontent.com/ramonferrari/r_and_python/main/intro_python_files/imports-85.data'
+df=pd.read_csv(url,header=None)
+df
+headers = ["symboling","normalized-losses","make","fuel-type","aspiration", "num-of-doors","body-style", "drive-wheels","engine-location","wheel-base", "length","width","height","curb-weight","engine-type", "num-of-cylinders", "engine-size","fuel-system","bore","stroke","compression-ratio","horsepower", "peak-rpm","city-mpg","highway-mpg","price"]
+df.columns=headers
+df["normalized-losses"]=df["normalized-losses"].replace("?",np.nan) # trocamos ? por NaN
+df['normalized-losses'] = df['normalized-losses'].astype(float) # convertermos de string para float
+df["price"]=df["price"].replace("?",np.nan) # trocamos ? por NaN
+df['price'] = df['price'].astype(float) # convertermos de string para float
+df["city-mpg"]=235/df["city-mpg"]
+df.rename(columns={"city-mpg":"city-L/100km"},inplace=True)
+df.dropna(axis=0,inplace=True) # mesmo acima, ja substituindo o dataset df
+df
+df.dtypes
 ```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
