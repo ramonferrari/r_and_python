@@ -345,7 +345,7 @@ ggplot2.
 plot(pressure)
 ```
 
-![](Script_files/figure-gfm/pressure-1.png)<!-- -->
+![](intro_python_files/figure-gfm/pressure-1.png)<!-- -->
 
 Em Python, utilize a biblioteca matplotlib:
 
@@ -359,7 +359,7 @@ plt.title("exemplo de plot")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
 
 ## Importar uma planilha para o Pandas
 
@@ -411,7 +411,7 @@ plt.title("Imigração a partir do Haiti")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-20-3.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-20-3.png)<!-- -->
 
 # Lendo um CSV
 
@@ -670,7 +670,7 @@ sns.regplot(x="engine-size",y="price",data=df1)
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-31-5.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-31-5.png)<!-- -->
 
 ``` python
 pearson_coef,p_value=stats.pearsonr(df1['engine-size'],df1['price'])
@@ -690,7 +690,7 @@ sns.regplot(x="highway-mpg",y="price",data=df1)
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-32-7.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-32-7.png)<!-- -->
 
 ``` python
 pearson_coef,p_value=stats.pearsonr(df1['highway-mpg'],df1['price'])
@@ -751,7 +751,7 @@ import seaborn as sns
 sns.boxplot(x="drive-wheels",y="price",data=df)
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-35-9.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-35-9.png)<!-- -->
 
 ``` python
 import matplotlib.pyplot as plt
@@ -764,7 +764,7 @@ plt.title("Gráfico de Dispersão do Tamanho do Motor vs Preço")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-36-11.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-36-11.png)<!-- -->
 
 # Agrupando dados (categóricos)
 
@@ -829,7 +829,7 @@ plt.pcolor(df_pivot,cmap='RdBu')
 plt.colorbar()
 ```
 
-    ## <matplotlib.colorbar.Colorbar object at 0x0000000061CC8B20>
+    ## <matplotlib.colorbar.Colorbar object at 0x0000000061CA2F40>
 
 ``` python
 plt.xlabel("drive-wheels")
@@ -837,7 +837,7 @@ plt.ylabel("body-style")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-38-13.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-38-13.png)<!-- -->
 
 # Sorting e Transposing um data frame
 
@@ -873,7 +873,7 @@ plt.title("Top 5 países em imigração")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-40-15.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-40-15.png)<!-- -->
 
 # Histogram Plot
 
@@ -890,7 +890,7 @@ plt.xlabel("Número de imigrantes")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-41-17.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-41-17.png)<!-- -->
 
 ``` python
 import matplotlib as mpl
@@ -908,7 +908,7 @@ plt.xlabel("Número de imigrantes")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-41-18.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-41-18.png)<!-- -->
 
 # Gráfico de barras
 
@@ -923,7 +923,7 @@ plt.xlabel("Ano")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-42-21.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-42-21.png)<!-- -->
 
 # Gráfico de pizza
 
@@ -951,7 +951,7 @@ plt.title("Imigração para o Canada por continente, de 1980 a 2013")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-44-23.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-44-23.png)<!-- -->
 
 # Boxplot
 
@@ -967,7 +967,7 @@ plt.ylabel("Número de Imigrantes")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-45-25.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-45-25.png)<!-- -->
 
 # Gráficos de Dispersão
 
@@ -995,15 +995,15 @@ plt.xlabel("Ano")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-46-27.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-46-27.png)<!-- -->
 
 # Folium
 
-    ## <folium.folium.Map object at 0x00000000624E59D0>
+    ## <folium.folium.Map object at 0x0000000062BC8A60>
 
-    ## <folium.folium.Map object at 0x0000000063D3DD30>
+    ## <folium.folium.Map object at 0x0000000062BB0FD0>
 
-    ## <folium.folium.Map object at 0x0000000063D3DC70>
+    ## <folium.folium.Map object at 0x0000000062BEEAC0>
 
 Folium deve ser aberto no Jupyter!
 

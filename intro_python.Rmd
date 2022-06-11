@@ -293,6 +293,40 @@ df["price_binned"]=pd.cut(df["price"],bins,labels=group_names,include_lowest=Tru
 df["price_binned"]
 ```
 
+# Correlação de variáveis
+```{python}
+import seaborn as sns
+from scipy import integrate, special, stats
+
+df1=df.dropna(subset=["price","engine-size",'highway-mpg'],axis=0)
+df1['price'] = df1['price'].astype(float)
+
+sns.regplot(x="engine-size",y="price",data=df1)
+plt.show()
+pearson_coef,p_value=stats.pearsonr(df1['engine-size'],df1['price'])
+pearson_coef
+p_value
+```
+
+```{python}
+sns.regplot(x="highway-mpg",y="price",data=df1)
+plt.show()
+pearson_coef,p_value=stats.pearsonr(df1['highway-mpg'],df1['price'])
+pearson_coef
+p_value
+```
+
+Para correlacionar variáveis categóricas (chamamos de associação), utilizamos o teste de $\chi^2$, que testa a probabilidade da distribuição de uma observação ser aleatória. O teste $\chi^2$ testa a hipótese nula que as variáveis são independentes, dizendo que um relacionamento existe ou não, mas sem dizer o tipo deste relacionamento.
+
+Para o resultado do teste obtendo um p-valor menor que 0.5, rejeita-se a hipótese numa que as variáveis são independentes e conclui-se que temos evidências de associação entre as duas variáveis categóricas.
+
+```{python,eval=F}
+import scipy
+from scipy import stats
+scipy.stats.chi2_contingency(cont_table,correction=True)
+# nao se falou como se faz cont_table
+```
+
 # Estatística Descritiva
 ```{python}
 df["drive-wheels"].describe()
