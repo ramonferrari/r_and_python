@@ -89,3 +89,72 @@ df.dtypes
     ## highway-mpg            int64
     ## price                float64
     ## dtype: object
+
+## Regressão Linear Simples
+
+Preditor ou variável independentes
+(![x](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;x "x"))
+Target ou variável dependente
+(![y](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;y "y")),
+que denotaremos de
+![\\hat{y}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%7By%7D "\hat{y}")
+fazendo referência a um modelo. Buscamos uma relação linear do tipo
+
+![\\hat{y}=ax + b](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%7By%7D%3Dax%20%2B%20b "\hat{y}=ax + b")
+
+Onde
+![a](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;a "a")
+é o slope, ou coeficiente angular, e
+![b](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;b "b")
+é o intercept, ou coeficiente linear. A equação cima nos permite
+calcular o valor de
+![y](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;y "y")
+para
+![x](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;x "x")
+não pertencentes ao conjunto de treinamento.
+
+### Modelando:
+
+``` python
+from sklearn.linear_model import LinearRegression
+lm=LinearRegression() # cria um objeto de regressão linear
+x=df[['highway-mpg']]
+y=df[['price']]
+lm.fit(x,y)
+```
+
+    ## LinearRegression()
+
+``` python
+y_hat=lm.predict(x)
+b=lm.intercept_
+a=lm.coef_
+print("O relacionamento é dado por: \nPrice = ",a,"highway-mpg + ",b)
+```
+
+    ## O relacionamento é dado por: 
+    ## Price =  [[-631.75258436]] highway-mpg +  [31586.29724467]
+
+## Regressão Linear Múltipla
+
+Buscamos uma relação linear do tipo
+
+![ \\hat{y} =a_1x_1 +a_2x_2 + a_3x_3 + \\dots + b ](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%20%5Chat%7By%7D%20%3Da_1x_1%20%2Ba_2x_2%20%2B%20a_3x_3%20%2B%20%5Cdots%20%2B%20b%20 " \hat{y} =a_1x_1 +a_2x_2 + a_3x_3 + \dots + b ")
+
+``` python
+x=df[['horsepower','curb-weight','engine-size','highway-mpg']]
+y=df[['price']]
+lm.fit(x,y)
+```
+
+    ## LinearRegression()
+
+``` python
+y_hat=lm.predict(x)
+b=lm.intercept_
+a=lm.coef_
+print("O relacionamento é dado por: \nPrice = ",a[[0],0],"horsepower + ",a[[0],1],"curb-weight + ",a[[0],2],"engine-size + ",a[[0],3],"highway-mpg + ",b)
+```
+
+    ## O relacionamento é dado por: 
+    ## Price =  [25.34377007] horsepower +  [8.64500785] curb-weight +  [16.79558345] engine-size +  [-2.6715555] highway-mpg +  [-14119.61866258]
