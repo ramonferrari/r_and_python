@@ -1,2 +1,1 @@
-# r_and_python
-# Script editado no RStudio do PC
+# Coleção de scripts em Python e R
