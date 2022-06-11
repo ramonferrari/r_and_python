@@ -196,7 +196,7 @@ import pandas as pd # pacote para estruturar data frames
 from __future__ import print_function # retrocompatibilidade python2
 #!pip install xlrd
 #print('xlrd instalado!')
-df_can = pd.read_excel('https://github.com/ramonferrari/r_and_python/blob/main/Script_files/Canada_new.xlsx?raw=true',sheet_name="Canada by Citizenship",skiprows=range(20),skipfooter=2, engine='openpyxl')
+df_can = pd.read_excel('https://github.com/ramonferrari/r_and_python/raw/main/intro_python_files/Canada_new.xlsx?raw=true',sheet_name="Canada by Citizenship",skiprows=range(20),skipfooter=2, engine='openpyxl')
 df_can.head()
 #list(df_can.columns)
 df_can.columns = df_can.columns.astype(str)
@@ -217,7 +217,7 @@ plt.show()
 # Lendo um CSV
 ```{python}
 import pandas as pd
-url='https://github.com/ramonferrari/r_and_python/raw/main/Script_files/imports-85.data'
+url='https://raw.githubusercontent.com/ramonferrari/r_and_python/main/intro_python_files/imports-85.data'
 df=pd.read_csv(url,header=None)
 # Para exportar, use df.to_csv(path)
 headers = ["symboling","normalized-losses","make","fuel-type","aspiration", "num-of-doors","body-style", "drive-wheels","engine-location","wheel-base", "length","width","height","curb-weight","engine-type", "num-of-cylinders", "engine-size","fuel-system","bore","stroke","compression-ratio","horsepower", "peak-rpm","city-mpg","highway-mpg","price"]
@@ -291,6 +291,40 @@ bins = np.linspace(df["price"].min(),df["price"].max(),4) # pega a amplitude e d
 group_names = ["Low","Medium","High"]
 df["price_binned"]=pd.cut(df["price"],bins,labels=group_names,include_lowest=True)
 df["price_binned"]
+```
+
+# Correlação de variáveis
+```{python}
+import seaborn as sns
+from scipy import integrate, special, stats
+
+df1=df.dropna(subset=["price","engine-size",'highway-mpg'],axis=0)
+df1['price'] = df1['price'].astype(float)
+
+sns.regplot(x="engine-size",y="price",data=df1)
+plt.show()
+pearson_coef,p_value=stats.pearsonr(df1['engine-size'],df1['price'])
+pearson_coef
+p_value
+```
+
+```{python}
+sns.regplot(x="highway-mpg",y="price",data=df1)
+plt.show()
+pearson_coef,p_value=stats.pearsonr(df1['highway-mpg'],df1['price'])
+pearson_coef
+p_value
+```
+
+Para correlacionar variáveis categóricas (chamamos de associação), utilizamos o teste de $\chi^2$, que testa a probabilidade da distribuição de uma observação ser aleatória. O teste $\chi^2$ testa a hipótese nula que as variáveis são independentes, dizendo que um relacionamento existe ou não, mas sem dizer o tipo deste relacionamento.
+
+Para o resultado do teste obtendo um p-valor menor que 0.5, rejeita-se a hipótese numa que as variáveis são independentes e conclui-se que temos evidências de associação entre as duas variáveis categóricas.
+
+```{python,eval=F}
+import scipy
+from scipy import stats
+scipy.stats.chi2_contingency(cont_table,correction=True)
+# nao se falou como se faz cont_table
 ```
 
 # Estatística Descritiva

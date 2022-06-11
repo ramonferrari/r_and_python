@@ -1,7 +1,7 @@
 Códigos em R e Python
 ================
 Ramon Moreno Ferrari em
-08/06/2022
+10/06/2022
 
 ------------------------------------------------------------------------
 
@@ -345,7 +345,7 @@ ggplot2.
 plot(pressure)
 ```
 
-![](Script_files/figure-gfm/pressure-1.png)<!-- -->
+![](intro_python_files/figure-gfm/pressure-1.png)<!-- -->
 
 Em Python, utilize a biblioteca matplotlib:
 
@@ -359,7 +359,7 @@ plt.title("exemplo de plot")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
 
 ## Importar uma planilha para o Pandas
 
@@ -369,7 +369,7 @@ import pandas as pd # pacote para estruturar data frames
 from __future__ import print_function # retrocompatibilidade python2
 #!pip install xlrd
 #print('xlrd instalado!')
-df_can = pd.read_excel('https://github.com/ramonferrari/r_and_python/blob/main/Script_files/Canada_new.xlsx?raw=true',sheet_name="Canada by Citizenship",skiprows=range(20),skipfooter=2, engine='openpyxl')
+df_can = pd.read_excel('https://github.com/ramonferrari/r_and_python/raw/main/intro_python_files/Canada_new.xlsx?raw=true',sheet_name="Canada by Citizenship",skiprows=range(20),skipfooter=2, engine='openpyxl')
 df_can.head()
 #list(df_can.columns)
 ```
@@ -411,13 +411,13 @@ plt.title("Imigração a partir do Haiti")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-20-3.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-20-3.png)<!-- -->
 
 # Lendo um CSV
 
 ``` python
 import pandas as pd
-url='https://github.com/ramonferrari/r_and_python/raw/main/Script_files/imports-85.data'
+url='https://raw.githubusercontent.com/ramonferrari/r_and_python/main/intro_python_files/imports-85.data'
 df=pd.read_csv(url,header=None)
 # Para exportar, use df.to_csv(path)
 headers = ["symboling","normalized-losses","make","fuel-type","aspiration", "num-of-doors","body-style", "drive-wheels","engine-location","wheel-base", "length","width","height","curb-weight","engine-type", "num-of-cylinders", "engine-size","fuel-system","bore","stroke","compression-ratio","horsepower", "peak-rpm","city-mpg","highway-mpg","price"]
@@ -649,6 +649,82 @@ df["price_binned"]
     ## Name: price_binned, Length: 205, dtype: category
     ## Categories (3, object): ['Low' < 'Medium' < 'High']
 
+# Correlação de variáveis
+
+``` python
+import seaborn as sns
+from scipy import integrate, special, stats
+
+df1=df.dropna(subset=["price","engine-size",'highway-mpg'],axis=0)
+df1['price'] = df1['price'].astype(float)
+```
+
+    ## <string>:1: SettingWithCopyWarning: 
+    ## A value is trying to be set on a copy of a slice from a DataFrame.
+    ## Try using .loc[row_indexer,col_indexer] = value instead
+    ## 
+    ## See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+
+``` python
+sns.regplot(x="engine-size",y="price",data=df1)
+plt.show()
+```
+
+![](intro_python_files/figure-gfm/unnamed-chunk-31-5.png)<!-- -->
+
+``` python
+pearson_coef,p_value=stats.pearsonr(df1['engine-size'],df1['price'])
+pearson_coef
+```
+
+    ## 0.8723351674455185
+
+``` python
+p_value
+```
+
+    ## 9.265491622198389e-64
+
+``` python
+sns.regplot(x="highway-mpg",y="price",data=df1)
+plt.show()
+```
+
+![](intro_python_files/figure-gfm/unnamed-chunk-32-7.png)<!-- -->
+
+``` python
+pearson_coef,p_value=stats.pearsonr(df1['highway-mpg'],df1['price'])
+pearson_coef
+```
+
+    ## -0.7046922650589529
+
+``` python
+p_value
+```
+
+    ## 1.7495471144477352e-31
+
+Para correlacionar variáveis categóricas (chamamos de associação),
+utilizamos o teste de
+![\\chi^2](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cchi%5E2 "\chi^2"),
+que testa a probabilidade da distribuição de uma observação ser
+aleatória. O teste
+![\\chi^2](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cchi%5E2 "\chi^2")
+testa a hipótese nula que as variáveis são independentes, dizendo que um
+relacionamento existe ou não, mas sem dizer o tipo deste relacionamento.
+
+Para o resultado do teste obtendo um p-valor menor que 0.5, rejeita-se a
+hipótese numa que as variáveis são independentes e conclui-se que temos
+evidências de associação entre as duas variáveis categóricas.
+
+``` python
+import scipy
+from scipy import stats
+scipy.stats.chi2_contingency(cont_table,correction=True)
+# nao se falou como se faz cont_table
+```
+
 # Estatística Descritiva
 
 ``` python
@@ -675,7 +751,7 @@ import seaborn as sns
 sns.boxplot(x="drive-wheels",y="price",data=df)
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-32-5.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-35-9.png)<!-- -->
 
 ``` python
 import matplotlib.pyplot as plt
@@ -688,7 +764,7 @@ plt.title("Gráfico de Dispersão do Tamanho do Motor vs Preço")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-33-7.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-36-11.png)<!-- -->
 
 # Agrupando dados (categóricos)
 
@@ -753,7 +829,7 @@ plt.pcolor(df_pivot,cmap='RdBu')
 plt.colorbar()
 ```
 
-    ## <matplotlib.colorbar.Colorbar object at 0x000000005F652C40>
+    ## <matplotlib.colorbar.Colorbar object at 0x0000000061CA2700>
 
 ``` python
 plt.xlabel("drive-wheels")
@@ -761,7 +837,7 @@ plt.ylabel("body-style")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-35-9.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-38-13.png)<!-- -->
 
 # Sorting e Transposing um data frame
 
@@ -797,7 +873,7 @@ plt.title("Top 5 países em imigração")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-37-11.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-40-15.png)<!-- -->
 
 # Histogram Plot
 
@@ -814,7 +890,7 @@ plt.xlabel("Número de imigrantes")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-38-13.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-41-17.png)<!-- -->
 
 ``` python
 import matplotlib as mpl
@@ -832,7 +908,7 @@ plt.xlabel("Número de imigrantes")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-38-14.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-41-18.png)<!-- -->
 
 # Gráfico de barras
 
@@ -847,7 +923,7 @@ plt.xlabel("Ano")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-39-17.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-42-21.png)<!-- -->
 
 # Gráfico de pizza
 
@@ -875,7 +951,7 @@ plt.title("Imigração para o Canada por continente, de 1980 a 2013")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-41-19.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-44-23.png)<!-- -->
 
 # Boxplot
 
@@ -891,7 +967,7 @@ plt.ylabel("Número de Imigrantes")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-42-21.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-45-25.png)<!-- -->
 
 # Gráficos de Dispersão
 
@@ -919,15 +995,15 @@ plt.xlabel("Ano")
 plt.show()
 ```
 
-![](Script_files/figure-gfm/unnamed-chunk-43-23.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-46-27.png)<!-- -->
 
 # Folium
 
-    ## <folium.folium.Map object at 0x0000000061B1D6A0>
+    ## <folium.folium.Map object at 0x0000000062BD7FA0>
 
-    ## <folium.folium.Map object at 0x000000005F652880>
+    ## <folium.folium.Map object at 0x0000000062A71AC0>
 
-    ## <folium.folium.Map object at 0x000000006111E670>
+    ## <folium.folium.Map object at 0x0000000062A71130>
 
 Folium deve ser aberto no Jupyter!
 
