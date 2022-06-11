@@ -369,7 +369,7 @@ import pandas as pd # pacote para estruturar data frames
 from __future__ import print_function # retrocompatibilidade python2
 #!pip install xlrd
 #print('xlrd instalado!')
-df_can = pd.read_excel('https://github.com/ramonferrari/r_and_python/blob/main/Script_files/Canada_new.xlsx?raw=true',sheet_name="Canada by Citizenship",skiprows=range(20),skipfooter=2, engine='openpyxl')
+df_can = pd.read_excel('https://github.com/ramonferrari/r_and_python/raw/main/intro_python_files/Canada_new.xlsx?raw=true',sheet_name="Canada by Citizenship",skiprows=range(20),skipfooter=2, engine='openpyxl')
 df_can.head()
 #list(df_can.columns)
 ```
@@ -417,7 +417,7 @@ plt.show()
 
 ``` python
 import pandas as pd
-url='https://github.com/ramonferrari/r_and_python/raw/main/Script_files/imports-85.data'
+url='https://raw.githubusercontent.com/ramonferrari/r_and_python/main/intro_python_files/imports-85.data'
 df=pd.read_csv(url,header=None)
 # Para exportar, use df.to_csv(path)
 headers = ["symboling","normalized-losses","make","fuel-type","aspiration", "num-of-doors","body-style", "drive-wheels","engine-location","wheel-base", "length","width","height","curb-weight","engine-type", "num-of-cylinders", "engine-size","fuel-system","bore","stroke","compression-ratio","horsepower", "peak-rpm","city-mpg","highway-mpg","price"]
@@ -829,7 +829,7 @@ plt.pcolor(df_pivot,cmap='RdBu')
 plt.colorbar()
 ```
 
-    ## <matplotlib.colorbar.Colorbar object at 0x0000000061CA2F40>
+    ## <matplotlib.colorbar.Colorbar object at 0x0000000061CA2700>
 
 ``` python
 plt.xlabel("drive-wheels")
@@ -999,11 +999,11 @@ plt.show()
 
 # Folium
 
-    ## <folium.folium.Map object at 0x0000000062BC8A60>
+    ## <folium.folium.Map object at 0x0000000062BD7FA0>
 
-    ## <folium.folium.Map object at 0x0000000062BB0FD0>
+    ## <folium.folium.Map object at 0x0000000062A71AC0>
 
-    ## <folium.folium.Map object at 0x0000000062BEEAC0>
+    ## <folium.folium.Map object at 0x0000000062A71130>
 
 Folium deve ser aberto no Jupyter!
 
