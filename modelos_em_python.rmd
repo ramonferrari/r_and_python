@@ -84,3 +84,67 @@ b=lm.intercept_
 a=lm.coef_
 print("O relacionamento é dado por: \nPrice = ",a[[0],0],"horsepower + ",a[[0],1],"curb-weight + ",a[[0],2],"engine-size + ",a[[0],3],"highway-mpg + ",b)
 ```
+
+## Gráficos de regressão
+```{python}
+import seaborn as sns
+sns.regplot(x='highway-mpg',y='price',data=df)
+```
+
+E o plot do valor residual $( e=y-\hat y )$:
+```{python}
+import seaborn as sns
+sns.residplot(df['highway-mpg'],df['price'])
+```
+
+Para mais variáveis, utilize o gráfico das distribuições:
+```{python}
+import seaborn as sns
+ax1=sns.histplot(df['price'],kde=True,stat="density",color="red",label="Valor real")
+sns.histplot(y_hat,kde=True,stat="density",color="blue",label="Valores modelados",ax=ax1)
+```
+
+## Regressão polinomial
+Unidimensional
+```{python}
+xpol=df['highway-mpg']
+ypol=df['price']
+
+f=np.polyfit(xpol,ypol,3)
+p=np.poly1d(f)
+print(p)
+```
+
+E multidimensional (que conta com normalização no fluxo!)
+```{python}
+xdata=df[['horsepower','curb-weight','engine-size','highway-mpg']]
+ydata=df['price']
+
+from sklearn.preprocessing import PolynomialFeatures
+pr=PolynomialFeatures(degree=2,include_bias=False)
+x_polly=pr.fit_transform(xdata[['horsepower','curb-weight']])
+
+from sklearn.preprocessing import StandardScaler
+SCALE=StandardScaler()
+SCALE.fit(xdata[['horsepower','curb-weight']])
+x_scale=SCALE.transform(xdata[['horsepower','curb-weight']])
+```
+
+# Com pipelines! Mas tá com zica!
+```{python,eval=F}
+Input=[('scale',StandardScaler()),('polynomial',PolynomialFeatures(degree=2)),('mode',LinearRegression())]
+pipe=Pipeline(Input)
+Pipe.fit(df[['horsepower','curb-weight','engine-size','highway-mpg']],y)
+y_hat=Pipe.predict(x[['horsepower','curb-weight','engine-size','highway-mpg']])
+```
+
+# Avaliação Numérica dos Modelos
+Mean Squared Error $(MSR)$
+R-Squared $(R^2)$, r-quadrado ou coeficiente de determinação
+$$R^2 = \left ( 1 - \frac{MSE_{\overline{y}}}{MSE_{\hat{y}}} \right ) $$
+```{python}
+from sklearn.metrics import mean_squared_error
+mean_squared_error(y,y_hat) #MSE
+lm.fit(df[['highway-mpg']],df['price']) 
+lm.score(df[['highway-mpg']],df['price']) #R2
+```

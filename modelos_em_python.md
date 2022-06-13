@@ -1,7 +1,7 @@
 Desenvolvimento de Modelos em Python
 ================
 Ramon Moreno Ferrari em
-11/06/2022
+13/06/2022
 
 ------------------------------------------------------------------------
 
@@ -158,3 +158,107 @@ print("O relacionamento é dado por: \nPrice = ",a[[0],0],"horsepower + ",a[[0],
 
     ## O relacionamento é dado por: 
     ## Price =  [25.34377007] horsepower +  [8.64500785] curb-weight +  [16.79558345] engine-size +  [-2.6715555] highway-mpg +  [-14119.61866258]
+
+## Gráficos de regressão
+
+``` python
+import seaborn as sns
+sns.regplot(x='highway-mpg',y='price',data=df)
+```
+
+![](modelos_em_python_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+
+E o plot do valor residual
+![( e=y-\\hat y )](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%28%20e%3Dy-%5Chat%20y%20%29 "( e=y-\hat y )"):
+
+``` python
+import seaborn as sns
+sns.residplot(df['highway-mpg'],df['price'])
+```
+
+![](modelos_em_python_files/figure-gfm/unnamed-chunk-6-3.png)<!-- -->
+
+Para mais variáveis, utilize o gráfico das distribuições:
+
+``` python
+import seaborn as sns
+ax1=sns.histplot(df['price'],kde=True,stat="density",color="red",label="Valor real")
+sns.histplot(y_hat,kde=True,stat="density",color="blue",label="Valores modelados",ax=ax1)
+```
+
+![](modelos_em_python_files/figure-gfm/unnamed-chunk-7-5.png)<!-- -->
+
+## Regressão polinomial
+
+Unidimensional
+
+``` python
+xpol=df['highway-mpg']
+ypol=df['price']
+
+f=np.polyfit(xpol,ypol,3)
+p=np.poly1d(f)
+print(p)
+```
+
+    ##          3         2
+    ## -0.4822 x + 82.75 x - 4504 x + 8.508e+04
+
+E multidimensional (que conta com normalização no fluxo!)
+
+``` python
+xdata=df[['horsepower','curb-weight','engine-size','highway-mpg']]
+ydata=df['price']
+
+from sklearn.preprocessing import PolynomialFeatures
+pr=PolynomialFeatures(degree=2,include_bias=False)
+x_polly=pr.fit_transform(xdata[['horsepower','curb-weight']])
+
+from sklearn.preprocessing import StandardScaler
+SCALE=StandardScaler()
+SCALE.fit(xdata[['horsepower','curb-weight']])
+```
+
+    ## StandardScaler()
+
+``` python
+x_scale=SCALE.transform(xdata[['horsepower','curb-weight']])
+```
+
+# Com pipelines! Mas tá com zica!
+
+``` python
+Input=[('scale',StandardScaler()),('polynomial',PolynomialFeatures(degree=2)),('mode',LinearRegression())]
+pipe=Pipeline(Input)
+Pipe.fit(df[['horsepower','curb-weight','engine-size','highway-mpg']],y)
+y_hat=Pipe.predict(x[['horsepower','curb-weight','engine-size','highway-mpg']])
+```
+
+# Avaliação Numérica dos Modelos
+
+Mean Squared Error
+![(MSR)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%28MSR%29 "(MSR)")
+R-Squared
+![(R^2)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%28R%5E2%29 "(R^2)"),
+r-quadrado ou coeficiente de determinação
+
+![R^2 = \\left ( 1 - \\frac{MSE\_{\\overline{y}}}{MSE\_{\\hat{y}}} \\right ) ](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;R%5E2%20%3D%20%5Cleft%20%28%201%20-%20%5Cfrac%7BMSE_%7B%5Coverline%7By%7D%7D%7D%7BMSE_%7B%5Chat%7By%7D%7D%7D%20%5Cright%20%29%20 "R^2 = \left ( 1 - \frac{MSE_{\overline{y}}}{MSE_{\hat{y}}} \right ) ")
+
+``` python
+from sklearn.metrics import mean_squared_error
+mean_squared_error(y,y_hat) #MSE
+```
+
+    ## 6486703.491471654
+
+``` python
+lm.fit(df[['highway-mpg']],df['price']) #R2
+```
+
+    ## LinearRegression()
+
+``` python
+lm.score(df[['highway-mpg']],df['price'])
+```
+
+    ## 0.502872127786816
