@@ -148,3 +148,62 @@ mean_squared_error(y,y_hat) #MSE
 lm.fit(df[['highway-mpg']],df['price']) 
 lm.score(df[['highway-mpg']],df['price']) #R2
 ```
+
+# Predizendo novos valores a partir dos Modelos
+```{python}
+lm.fit(df[['highway-mpg']],df['price'])
+lm.predict(np.array(30.0).reshape(-1,1))
+```
+
+Os valores fazem sentido? Modele varios...
+```{python}
+new_input=np.arange(1,101,1).reshape(-1,1)
+y_hat=lm.predict(new_input)
+df2=pd.DataFrame({'x':np.concatenate(new_input),'y_hat':y_hat.tolist()})
+sns.regplot(x='x',y='y_hat',data=df2)
+```
+
+# Concatenate, tolist...
+Observe a diferença entre
+```{python}
+df['price']
+df[['price']]
+```
+
+# Avaliação e refinamento de modelos
+Lembra-se dividir o dataset entre trainamento e teste!
+```{python}
+from sklearn.model_selection import train_test_split
+x_train, x_test, y_train, y_test = x_train, x_test, y_train, y_test = train_test_split(df['highway-mpg'],df['price'],test_size=0.3,random_state=0)
+```
+
+# Cross validation ou validação cruzada
+```{python}
+from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import cross_val_predict
+
+lm=LinearRegression()
+scores=cross_val_score(lm,x_train.values.reshape(-1,1),y_train.values.reshape(-1,1),cv=3)
+scores # valor do R²
+y_hat=cross_val_predict(lm,x_train.values.reshape(-1,1),y_train.values.reshape(-1,1),cv=3)
+
+df3=pd.DataFrame({'x':x_train.tolist(),'y_hat':np.concatenate(y_hat)})
+sns.regplot(x='x',y='y_hat',data=df3)
+```
+
+# Avaliando o erro de diferentes polinômios
+```{python}
+from sklearn.model_selection import train_test_split
+x_train, x_test, y_train, y_test = x_train, x_test, y_train, y_test = train_test_split(df[['horsepower','curb-weight','engine-size','highway-mpg']],df['price'],test_size=0.3,random_state=0)
+
+rsqu_test=[]
+order=[1,2,3,4]
+for n in order:
+    pr=PolynomialFeatures(degree=n)
+    x_train_pr=pr.fit_transform(x_train[['horsepower']])
+    x_test_pr=pr.fit_transform(x_test[['horsepower']])
+    lm.fit(x_train_pr,y_train)
+    rsqu_test.append(lm.score(x_test_pr,y_test))
+rsqu_test
+```
+
