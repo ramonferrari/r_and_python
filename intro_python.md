@@ -1,7 +1,7 @@
 Códigos em R e Python
 ================
 Ramon Moreno Ferrari em
-10/06/2022
+14/06/2022
 
 ------------------------------------------------------------------------
 
@@ -30,16 +30,9 @@ Utilize TAB ou 4 espaços
 
 ``` python
 print("nivel 1") # nível 1
-```
-
-    ## nivel 1
-
-``` python
 if(True):
   print("nivel 2") # nível 2
 ```
-
-    ## nivel 2
 
 ## Atribuição
 
@@ -65,66 +58,25 @@ Atribuição múltipla é possível:
 ``` python
 filho1, filho2, filho3 = "Doug", 'Oliver', 'Savana' # Podemos usar aspas simples ou duplas!
 print(filho3)
-```
-
-    ## Savana
-
-``` python
 meus_filhos = "Meus filhos são: " + filho1 + ", " + filho2 + " e " + filho3 + "!"
 print(meus_filhos)
 ```
-
-    ## Meus filhos são: Doug, Oliver e Savana!
 
 ## Indexação e Slicing
 
 ``` python
 filho1[0] # em Python, indexação começa pelo zero
-```
-
-    ## 'D'
-
-``` python
 filho1[1]
 ```
 
-    ## 'o'
-
 ``` python
 filho1[1:] # exclusivo, mas indiquei o 1
-```
-
-    ## 'oug'
-
-``` python
 filho2[:2] # exclusivo
-```
-
-    ## 'Ol'
-
-``` python
 filho1[-1] # lendo de tras pra frente
-```
-
-    ## 'g'
-
-``` python
 filho2[:-1] # lendo de tras pra frente, exclusivo!
-```
-
-    ## 'Olive'
-
-``` python
 filho3[::2] # pulando dois, começando do zero! 
-```
-
-    ## 'Svn'
-
-``` python
 filho3[::-2] # pulando dois, de trás pra frente!
 ```
-
-    ## 'aaa'
 
 A string é imutável, você não consegue mudar apenas um caractere:
 
@@ -139,8 +91,6 @@ filho1="G"+filho1[1:]
 filho1
 ```
 
-    ## 'Goug'
-
 Operações são possíveis!
 
 ``` python
@@ -148,35 +98,16 @@ filho1="D"+filho1[1:]
 filho1*3
 ```
 
-    ## 'DougDougDoug'
-
 ## Números e descobrir tipo da variável
 
 No Python, temos dois tipos principais: inteiro e real.
 
 ``` python
 type(2)
-```
-
-    ## <class 'int'>
-
-``` python
 type(3.14)
-```
-
-    ## <class 'float'>
-
-``` python
 float(2)
-```
-
-    ## 2.0
-
-``` python
 int(3.14)
 ```
-
-    ## 3
 
 ## Operações com números
 
@@ -184,45 +115,13 @@ No Python, temos dois tipos principais: inteiro e real.
 
 ``` python
 2+3.14 # soma
-```
-
-    ## 5.140000000000001
-
-``` python
 3.14-2 #subtração
-```
-
-    ## 1.1400000000000001
-
-``` python
 2*3.14 # multiplicação
-```
-
-    ## 6.28
-
-``` python
 3.14/2 # divisão
-```
-
-    ## 1.57
-
-``` python
 3.14//2 # quociente da divisão
-```
-
-    ## 1.0
-
-``` python
 3.14 % 2 # resto da divisão
-```
-
-    ## 1.1400000000000001
-
-``` python
 3.14 ** 2 # potenciação
 ```
-
-    ## 9.8596
 
 ## Atribuir operando
 
@@ -239,59 +138,59 @@ z//=10
 
 ## Operações lógicas
 
-``` python
-3.14 == 2 # igualdade
-```
-
-    ## False
+Igualdade
 
 ``` python
-3.14 != 2 # não igual
+3.14 == 2
 ```
 
-    ## True
+Não igual
 
 ``` python
-3.14 >= 2 # maior ou igual que
+3.14 != 2
 ```
 
-    ## True
+Maior ou igual que
 
 ``` python
-3.14 > 2 # maior que
+3.14 >= 2
 ```
 
-    ## True
+Maior que
 
 ``` python
-3.14 <= 2 # menor ou igual que
+3.14 > 2
 ```
 
-    ## False
+Menor ou igual que
 
 ``` python
-3.14 < 2 # menor que
+3.14 <= 2
 ```
 
-    ## False
+Menor que
+
+``` python
+3.14 < 2
+```
+
+Operador e
 
 ``` python
 3.14 == 2 and 3.14 != 2
 ```
 
-    ## False
+Operador ou
 
 ``` python
 3.14 == 2 or 3.14 != 2
 ```
 
-    ## True
+Operador not
 
 ``` python
 not(3.14 == 2 and 3.14 != 2)
 ```
-
-    ## True
 
 ## Impressão de textos e variáveis
 
@@ -359,7 +258,7 @@ plt.title("exemplo de plot")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-26-1.png)<!-- -->
 
 ## Importar uma planilha para o Pandas
 
@@ -411,7 +310,7 @@ plt.title("Imigração a partir do Haiti")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-20-3.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-28-3.png)<!-- -->
 
 # Lendo um CSV
 
@@ -670,7 +569,7 @@ sns.regplot(x="engine-size",y="price",data=df1)
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-31-5.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-39-5.png)<!-- -->
 
 ``` python
 pearson_coef,p_value=stats.pearsonr(df1['engine-size'],df1['price'])
@@ -690,7 +589,7 @@ sns.regplot(x="highway-mpg",y="price",data=df1)
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-32-7.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-40-7.png)<!-- -->
 
 ``` python
 pearson_coef,p_value=stats.pearsonr(df1['highway-mpg'],df1['price'])
@@ -751,7 +650,7 @@ import seaborn as sns
 sns.boxplot(x="drive-wheels",y="price",data=df)
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-35-9.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-43-9.png)<!-- -->
 
 ``` python
 import matplotlib.pyplot as plt
@@ -764,7 +663,7 @@ plt.title("Gráfico de Dispersão do Tamanho do Motor vs Preço")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-36-11.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-44-11.png)<!-- -->
 
 # Agrupando dados (categóricos)
 
@@ -829,7 +728,7 @@ plt.pcolor(df_pivot,cmap='RdBu')
 plt.colorbar()
 ```
 
-    ## <matplotlib.colorbar.Colorbar object at 0x0000000061CA2700>
+    ## <matplotlib.colorbar.Colorbar object at 0x0000000065BA1610>
 
 ``` python
 plt.xlabel("drive-wheels")
@@ -837,7 +736,7 @@ plt.ylabel("body-style")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-38-13.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-46-13.png)<!-- -->
 
 # Sorting e Transposing um data frame
 
@@ -873,7 +772,7 @@ plt.title("Top 5 países em imigração")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-40-15.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-48-15.png)<!-- -->
 
 # Histogram Plot
 
@@ -890,7 +789,7 @@ plt.xlabel("Número de imigrantes")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-41-17.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-49-17.png)<!-- -->
 
 ``` python
 import matplotlib as mpl
@@ -908,7 +807,7 @@ plt.xlabel("Número de imigrantes")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-41-18.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-49-18.png)<!-- -->
 
 # Gráfico de barras
 
@@ -923,7 +822,7 @@ plt.xlabel("Ano")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-42-21.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-50-21.png)<!-- -->
 
 # Gráfico de pizza
 
@@ -951,7 +850,7 @@ plt.title("Imigração para o Canada por continente, de 1980 a 2013")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-44-23.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-52-23.png)<!-- -->
 
 # Boxplot
 
@@ -967,7 +866,7 @@ plt.ylabel("Número de Imigrantes")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-45-25.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-53-25.png)<!-- -->
 
 # Gráficos de Dispersão
 
@@ -995,15 +894,15 @@ plt.xlabel("Ano")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-46-27.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-54-27.png)<!-- -->
 
 # Folium
 
-    ## <folium.folium.Map object at 0x0000000062BD7FA0>
+    ## <folium.folium.Map object at 0x0000000066369790>
 
-    ## <folium.folium.Map object at 0x0000000062A71AC0>
+    ## <folium.folium.Map object at 0x0000000066B998E0>
 
-    ## <folium.folium.Map object at 0x0000000062A71130>
+    ## <folium.folium.Map object at 0x0000000066B99430>
 
 Folium deve ser aberto no Jupyter!
 
