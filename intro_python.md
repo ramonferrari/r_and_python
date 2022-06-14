@@ -39,6 +39,23 @@ meus_filhos = "Meus filhos são: " + filho1 + ", " + filho2 + " e " + filho3 + "
 print(meus_filhos)
 ```
 
+## Métodos/atributos/funções para strings
+
+Funções built-in:
+
+``` python
+meus_filhos.upper()
+meus_filhos.lower()
+meus_filhos.split()
+meus_filhos.split('o')
+meus_filhos.capitalize() # apenas primeira em maiúscula
+meus_filhos.count('o')
+meus_filhos.find('o') # apenas a primeira ocorrência
+meus_filhos.islower()
+meus_filhos.isspace()
+meus_filhos.endswith('a')
+```
+
 ## Indexação e Slicing
 
 ``` python
@@ -115,7 +132,7 @@ z//=10
 
 ## Operações lógicas
 
-Igualdade
+Igualdade (vale para strings!)
 
 ``` python
 3.14 == 2
@@ -189,6 +206,80 @@ help(print)
     ##     end:   string appended after the last value, default a newline.
     ##     flush: whether to forcibly flush the stream.
 
+## Estruturas de dados
+
+### Listas
+
+As listas se parecem mais com as sequências/vetores de números/strings.
+Utilizamos colchetes `[`,`]` e vírgulas `,`.
+
+``` python
+lista=[1,2,3,4,5]
+lista
+```
+
+    ## [1, 2, 3, 4, 5]
+
+Acesse um item da lista usando `[]`
+
+``` python
+lista[4]
+```
+
+    ## 5
+
+Listas podem receber outras listas (aninhamento de dados!)
+
+``` python
+lista2=[1,2,3,4,5,lista]
+lista2
+```
+
+    ## [1, 2, 3, 4, 5, [1, 2, 3, 4, 5]]
+
+Para deletar um item da lista, utilize o comando `del`:
+
+``` python
+del(lista2[5])
+lista2
+```
+
+    ## [1, 2, 3, 4, 5]
+
+Operador `in`:
+
+``` python
+5 in lista # false
+```
+
+    ## True
+
+``` python
+6 in lista # true
+```
+
+    ## False
+
+Funções built-in:
+
+``` python
+len(lista)
+min(lista)
+max(lista)
+lista.append(6)
+lista.count(5)
+```
+
+Criando uma lista vazia, para incremento posterior!
+
+``` python
+newlist=[]
+```
+
+### Dicionários
+
+### Tuplas
+
 ## Including Plots
 
 Em Python, utilize a biblioteca matplotlib:
@@ -203,7 +294,7 @@ plt.title("exemplo de plot")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-31-1.png)<!-- -->
 
 ## Importar uma planilha para o Pandas
 
@@ -255,7 +346,7 @@ plt.title("Imigração a partir do Haiti")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-25-3.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-33-3.png)<!-- -->
 
 # Lendo um CSV
 
@@ -514,7 +605,7 @@ sns.regplot(x="engine-size",y="price",data=df1)
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-36-5.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-44-5.png)<!-- -->
 
 ``` python
 pearson_coef,p_value=stats.pearsonr(df1['engine-size'],df1['price'])
@@ -534,7 +625,7 @@ sns.regplot(x="highway-mpg",y="price",data=df1)
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-37-7.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-45-7.png)<!-- -->
 
 ``` python
 pearson_coef,p_value=stats.pearsonr(df1['highway-mpg'],df1['price'])
@@ -595,7 +686,7 @@ import seaborn as sns
 sns.boxplot(x="drive-wheels",y="price",data=df)
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-40-9.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-48-9.png)<!-- -->
 
 ``` python
 import matplotlib.pyplot as plt
@@ -608,7 +699,7 @@ plt.title("Gráfico de Dispersão do Tamanho do Motor vs Preço")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-41-11.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-49-11.png)<!-- -->
 
 # Agrupando dados (categóricos)
 
@@ -673,7 +764,7 @@ plt.pcolor(df_pivot,cmap='RdBu')
 plt.colorbar()
 ```
 
-    ## <matplotlib.colorbar.Colorbar object at 0x0000000065A2E100>
+    ## <matplotlib.colorbar.Colorbar object at 0x00000000665B0FD0>
 
 ``` python
 plt.xlabel("drive-wheels")
@@ -681,7 +772,7 @@ plt.ylabel("body-style")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-43-13.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-51-13.png)<!-- -->
 
 # Sorting e Transposing um data frame
 
@@ -717,7 +808,7 @@ plt.title("Top 5 países em imigração")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-45-15.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-53-15.png)<!-- -->
 
 # Histogram Plot
 
@@ -734,7 +825,7 @@ plt.xlabel("Número de imigrantes")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-46-17.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-54-17.png)<!-- -->
 
 ``` python
 import matplotlib as mpl
@@ -752,7 +843,7 @@ plt.xlabel("Número de imigrantes")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-46-18.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-54-18.png)<!-- -->
 
 # Gráfico de barras
 
@@ -767,7 +858,7 @@ plt.xlabel("Ano")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-47-21.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-55-21.png)<!-- -->
 
 # Gráfico de pizza
 
@@ -795,7 +886,7 @@ plt.title("Imigração para o Canada por continente, de 1980 a 2013")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-49-23.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-57-23.png)<!-- -->
 
 # Boxplot
 
@@ -811,7 +902,7 @@ plt.ylabel("Número de Imigrantes")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-50-25.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-58-25.png)<!-- -->
 
 # Gráficos de Dispersão
 
@@ -839,15 +930,15 @@ plt.xlabel("Ano")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-51-27.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-59-27.png)<!-- -->
 
 # Folium
 
-    ## <folium.folium.Map object at 0x0000000063E407F0>
+    ## <folium.folium.Map object at 0x0000000065C92F10>
 
-    ## <folium.folium.Map object at 0x0000000065D9C610>
+    ## <folium.folium.Map object at 0x00000000663386A0>
 
-    ## <folium.folium.Map object at 0x0000000065D9CD60>
+    ## <folium.folium.Map object at 0x0000000067A02400>
 
 Folium deve ser aberto no Jupyter!
 

@@ -60,6 +60,21 @@ meus_filhos = "Meus filhos são: " + filho1 + ", " + filho2 + " e " + filho3 + "
 print(meus_filhos)
 ```
 
+## Métodos/atributos/funções para strings
+Funções built-in:
+```{python,eval=F}
+meus_filhos.upper()
+meus_filhos.lower()
+meus_filhos.split()
+meus_filhos.split('o')
+meus_filhos.capitalize() # apenas primeira em maiúscula
+meus_filhos.count('o')
+meus_filhos.find('o') # apenas a primeira ocorrência
+meus_filhos.islower()
+meus_filhos.isspace()
+meus_filhos.endswith('a')
+```
+
 ## Indexação e Slicing
 ```{python,eval=F}
 filho1[0] # em Python, indexação começa pelo zero
@@ -126,7 +141,7 @@ z//=10
 ```
 
 ## Operações lógicas
-Igualdade
+Igualdade (vale para strings!)
 ```{python,eval=F}
 3.14 == 2
 ```
@@ -176,6 +191,55 @@ Utilize a função help() em Python:
 ```{python}
 help(print)
 ```
+
+## Estruturas de dados
+### Listas
+As listas se parecem mais com as sequências/vetores de números/strings.
+Utilizamos colchetes `[`,`]` e vírgulas `,`.
+```{python}
+lista=[1,2,3,4,5]
+lista
+```
+
+Acesse um item da lista usando `[]`
+```{python}
+lista[4]
+```
+
+Listas podem receber outras listas (aninhamento de dados!)
+```{python}
+lista2=[1,2,3,4,5,lista]
+lista2
+```
+
+Para deletar um item da lista, utilize o comando `del`:
+```{python}
+del(lista2[5])
+lista2
+```
+
+Operador `in`:
+```{python,eval=F}
+5 in lista # false
+6 in lista # true
+```
+
+Funções built-in:
+```{python,eval=F}
+len(lista)
+min(lista)
+max(lista)
+lista.append(6)
+lista.count(5)
+```
+Criando uma lista vazia, para incremento posterior!
+```{python}
+newlist=[]
+```
+### Dicionários
+
+### Tuplas
+
 
 ## Including Plots
 Em Python, utilize a biblioteca matplotlib:
