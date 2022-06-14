@@ -34,13 +34,8 @@ font_add_google(name = "Roboto Slab",family = "Roboto") # https://fonts.google.c
 
 ## O mais básico: comentando o código
 Use # para comentar o código:    
-```{r}
-# Isso é um comentário.
-```
-
-O mesmo (#) em Python:
 ```{python,warning=FALSE,message=FALSE}
-# Isso também é um comentário!
+# Isso é um comentário!
 
 # Que também é obtido por 3 aspas duplas! """
 # (Muito útil para comentar grandes blocos de código rapidamente)
@@ -54,14 +49,6 @@ Utilize TAB ou 4 espaços
 print("nivel 1") # nível 1
 if(True):
   print("nivel 2") # nível 2
-```
-
-## Atribuição
-No R, utilize `=` ou `<-` para atribuir o valor a uma variável.
-
-```{r cars}
-df<-cars # o sinal de = também funciona!
-summary(df)
 ```
 
 ## Operações com strings
@@ -184,32 +171,13 @@ Operador not
 not(3.14 == 2 and 3.14 != 2)
 ```
 
-## Impressão de textos e variáveis
-Em R:
-```{r}
-print("oi tudo bem?")
-print(df$speed)
-```
-
 ## Help-me!
-Em R, utilize a função help()
-```{r,eval=F}
-help(print)
-```
-
-O mesmo em Python:
+Utilize a função help() em Python:
 ```{python}
 help(print)
 ```
 
 ## Including Plots
-
-Os plots são incluídos no Rmd. No R, utilize plot() ou o package ggplot2.
-
-```{r pressure}
-plot(pressure)
-```
-
 Em Python, utilize a biblioteca matplotlib:
 ```{python}
 import matplotlib.pyplot as plt

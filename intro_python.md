@@ -9,14 +9,8 @@ Ramon Moreno Ferrari em
 
 Use \# para comentar o código:
 
-``` r
-# Isso é um comentário.
-```
-
-O mesmo (#) em Python:
-
 ``` python
-# Isso também é um comentário!
+# Isso é um comentário!
 
 # Que também é obtido por 3 aspas duplas! """
 # (Muito útil para comentar grandes blocos de código rapidamente)
@@ -33,23 +27,6 @@ print("nivel 1") # nível 1
 if(True):
   print("nivel 2") # nível 2
 ```
-
-## Atribuição
-
-No R, utilize `=` ou `<-` para atribuir o valor a uma variável.
-
-``` r
-df<-cars # o sinal de = também funciona!
-summary(df)
-```
-
-    ##      speed           dist       
-    ##  Min.   : 4.0   Min.   :  2.00  
-    ##  1st Qu.:12.0   1st Qu.: 26.00  
-    ##  Median :15.0   Median : 36.00  
-    ##  Mean   :15.4   Mean   : 42.98  
-    ##  3rd Qu.:19.0   3rd Qu.: 56.00  
-    ##  Max.   :25.0   Max.   :120.00
 
 ## Operações com strings
 
@@ -192,32 +169,9 @@ Operador not
 not(3.14 == 2 and 3.14 != 2)
 ```
 
-## Impressão de textos e variáveis
-
-Em R:
-
-``` r
-print("oi tudo bem?")
-```
-
-    ## [1] "oi tudo bem?"
-
-``` r
-print(df$speed)
-```
-
-    ##  [1]  4  4  7  7  8  9 10 10 10 11 11 12 12 12 12 13 13 13 13 14 14 14 14 15 15
-    ## [26] 15 16 16 17 17 17 18 18 18 18 19 19 19 20 20 20 20 20 22 23 24 24 24 24 25
-
 ## Help-me!
 
-Em R, utilize a função help()
-
-``` r
-help(print)
-```
-
-O mesmo em Python:
+Utilize a função help() em Python:
 
 ``` python
 help(print)
@@ -237,15 +191,6 @@ help(print)
 
 ## Including Plots
 
-Os plots são incluídos no Rmd. No R, utilize plot() ou o package
-ggplot2.
-
-``` r
-plot(pressure)
-```
-
-![](intro_python_files/figure-gfm/pressure-1.png)<!-- -->
-
 Em Python, utilize a biblioteca matplotlib:
 
 ``` python
@@ -258,7 +203,7 @@ plt.title("exemplo de plot")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-26-1.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
 
 ## Importar uma planilha para o Pandas
 
@@ -310,7 +255,7 @@ plt.title("Imigração a partir do Haiti")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-28-3.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-25-3.png)<!-- -->
 
 # Lendo um CSV
 
@@ -569,7 +514,7 @@ sns.regplot(x="engine-size",y="price",data=df1)
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-39-5.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-36-5.png)<!-- -->
 
 ``` python
 pearson_coef,p_value=stats.pearsonr(df1['engine-size'],df1['price'])
@@ -589,7 +534,7 @@ sns.regplot(x="highway-mpg",y="price",data=df1)
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-40-7.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-37-7.png)<!-- -->
 
 ``` python
 pearson_coef,p_value=stats.pearsonr(df1['highway-mpg'],df1['price'])
@@ -650,7 +595,7 @@ import seaborn as sns
 sns.boxplot(x="drive-wheels",y="price",data=df)
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-43-9.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-40-9.png)<!-- -->
 
 ``` python
 import matplotlib.pyplot as plt
@@ -663,7 +608,7 @@ plt.title("Gráfico de Dispersão do Tamanho do Motor vs Preço")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-44-11.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-41-11.png)<!-- -->
 
 # Agrupando dados (categóricos)
 
@@ -728,7 +673,7 @@ plt.pcolor(df_pivot,cmap='RdBu')
 plt.colorbar()
 ```
 
-    ## <matplotlib.colorbar.Colorbar object at 0x0000000065BA1610>
+    ## <matplotlib.colorbar.Colorbar object at 0x0000000065A2E100>
 
 ``` python
 plt.xlabel("drive-wheels")
@@ -736,7 +681,7 @@ plt.ylabel("body-style")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-46-13.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-43-13.png)<!-- -->
 
 # Sorting e Transposing um data frame
 
@@ -772,7 +717,7 @@ plt.title("Top 5 países em imigração")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-48-15.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-45-15.png)<!-- -->
 
 # Histogram Plot
 
@@ -789,7 +734,7 @@ plt.xlabel("Número de imigrantes")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-49-17.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-46-17.png)<!-- -->
 
 ``` python
 import matplotlib as mpl
@@ -807,7 +752,7 @@ plt.xlabel("Número de imigrantes")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-49-18.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-46-18.png)<!-- -->
 
 # Gráfico de barras
 
@@ -822,7 +767,7 @@ plt.xlabel("Ano")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-50-21.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-47-21.png)<!-- -->
 
 # Gráfico de pizza
 
@@ -850,7 +795,7 @@ plt.title("Imigração para o Canada por continente, de 1980 a 2013")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-52-23.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-49-23.png)<!-- -->
 
 # Boxplot
 
@@ -866,7 +811,7 @@ plt.ylabel("Número de Imigrantes")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-53-25.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-50-25.png)<!-- -->
 
 # Gráficos de Dispersão
 
@@ -894,15 +839,15 @@ plt.xlabel("Ano")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-54-27.png)<!-- -->
+![](intro_python_files/figure-gfm/unnamed-chunk-51-27.png)<!-- -->
 
 # Folium
 
-    ## <folium.folium.Map object at 0x0000000066369790>
+    ## <folium.folium.Map object at 0x0000000063E407F0>
 
-    ## <folium.folium.Map object at 0x0000000066B998E0>
+    ## <folium.folium.Map object at 0x0000000065D9C610>
 
-    ## <folium.folium.Map object at 0x0000000066B99430>
+    ## <folium.folium.Map object at 0x0000000065D9CD60>
 
 Folium deve ser aberto no Jupyter!
 

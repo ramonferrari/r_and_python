@@ -1,0 +1,72 @@
+---
+title: "Códigos em R"
+author: "Ramon Moreno Ferrari em "
+date: "`r format(Sys.time(), '%d/%m/%Y')`"
+output: github_document #output RMD
+# Para output PDF/Latex, comentar acima e descomentar abaixo:
+#
+#fontfamily: lmodern #https://tug.org/FontCatalogue/seriffonts.html
+#header-includes:
+#  - \usepackage{graphicx}
+#  - \usepackage{fancyhdr}
+#  - \usepackage[T1]{fontenc}
+#  - \usepackage[default]{sourcesanspro}
+#  - \usepackage{lmodern}
+#  - \input{preamble}  
+#  - \pagestyle{mystyle}
+#  - \hypersetup{pageanchor=false}
+#output: 
+#  pdf_document:
+#    keep_tex: true
+---
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(reticulate)
+```
+
+```{r,warning=FALSE,message=FALSE,include=FALSE}
+library(tidyverse)
+library(knitr)
+library(showtext)
+font_add_google(name = "Roboto Slab",family = "Roboto") # https://fonts.google.com/?sort=popularity
+```
+
+## O mais básico: comentando o código
+Use # para comentar o código:    
+```{r}
+# Isso é um comentário.
+```
+
+## Atribuição
+No R, utilize `=` ou `<-` para atribuir o valor a uma variável.
+
+```{r cars}
+df<-cars # o sinal de = também funciona!
+summary(df)
+```
+
+## Impressão de textos e variáveis
+Em R:
+```{r}
+print("oi tudo bem?")
+print(df$speed)
+```
+
+## Help-me!
+Em R, utilize a função help()
+```{r,eval=F}
+help(print)
+```
+
+## Including Plots
+
+Os plots são incluídos no Rmd. No R, utilize plot() ou o package ggplot2.
+
+```{r pressure}
+plot(pressure)
+```
+
+## Sobre Rmd
+Utilizar `echo = FALSE` no RMarkdown faz com que o código não apareça no output, apenas o resultado (um gráfico, por exemplo!).
+
