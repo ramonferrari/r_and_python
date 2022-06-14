@@ -32,22 +32,119 @@ library(showtext)
 font_add_google(name = "Roboto Slab",family = "Roboto") # https://fonts.google.com/?sort=popularity
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+## Baixando o dado
+```{python}
+import pandas as pd
+import numpy as np
+url='https://raw.githubusercontent.com/ramonferrari/r_and_python/main/intro_python_files/imports-85.data'
+df=pd.read_csv(url,header=None)
+df
+headers = ["symboling","normalized-losses","make","fuel-type","aspiration", "num-of-doors","body-style", "drive-wheels","engine-location","wheel-base", "length","width","height","curb-weight","engine-type", "num-of-cylinders", "engine-size","fuel-system","bore","stroke","compression-ratio","horsepower", "peak-rpm","city-mpg","highway-mpg","price"]
+df.columns=headers
+df["normalized-losses"]=df["normalized-losses"].replace("?",np.nan) # trocamos ? por NaN
+df['normalized-losses'] = df['normalized-losses'].astype(float) # convertermos de string para float
+df["price"]=df["price"].replace("?",np.nan) # trocamos ? por NaN
+df['price'] = df['price'].astype(float) # convertermos de string para float
+df["city-mpg"]=235/df["city-mpg"]
+df.rename(columns={"city-mpg":"city-L/100km"},inplace=True)
+df.dropna(axis=0,inplace=True) # mesmo acima, ja substituindo o dataset df
+df
+df.dtypes
 ```
 
-## Including Plots
+## Regressão Linear Simples
+Preditor ou variável independentes ($x$)
+Target ou variável dependente ($y$), que denotaremos de $\hat{y}$ fazendo referência a um modelo.
+Buscamos uma relação linear do tipo
+$$\hat{y}=ax + b$$
+Onde $a$ é o slope, ou coeficiente angular, e $b$ é o intercept, ou coeficiente linear. A equação cima nos permite calcular o valor de $y$ para $x$ não pertencentes ao conjunto de treinamento.
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+### Modelando:
+```{python}
+from sklearn.linear_model import LinearRegression
+lm=LinearRegression() # cria um objeto de regressão linear
+x=df[['highway-mpg']]
+y=df[['price']]
+lm.fit(x,y)
+y_hat=lm.predict(x)
+b=lm.intercept_
+a=lm.coef_
+print("O relacionamento é dado por: \nPrice = ",a,"highway-mpg + ",b)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+## Regressão Linear Múltipla
+Buscamos uma relação linear do tipo
+$$ \hat{y} =a_1x_1 +a_2x_2 + a_3x_3 + \dots + b $$
+```{python}
+x=df[['horsepower','curb-weight','engine-size','highway-mpg']]
+y=df[['price']]
+lm.fit(x,y)
+y_hat=lm.predict(x)
+b=lm.intercept_
+a=lm.coef_
+print("O relacionamento é dado por: \nPrice = ",a[[0],0],"horsepower + ",a[[0],1],"curb-weight + ",a[[0],2],"engine-size + ",a[[0],3],"highway-mpg + ",b)
+```
+
+## Gráficos de regressão
+```{python}
+import seaborn as sns
+sns.regplot(x='highway-mpg',y='price',data=df)
+```
+
+E o plot do valor residual $( e=y-\hat y )$:
+```{python}
+import seaborn as sns
+sns.residplot(df['highway-mpg'],df['price'])
+```
+
+Para mais variáveis, utilize o gráfico das distribuições:
+```{python}
+import seaborn as sns
+ax1=sns.histplot(df['price'],kde=True,stat="density",color="red",label="Valor real")
+sns.histplot(y_hat,kde=True,stat="density",color="blue",label="Valores modelados",ax=ax1)
+```
+
+## Regressão polinomial
+Unidimensional
+```{python}
+xpol=df['highway-mpg']
+ypol=df['price']
+
+f=np.polyfit(xpol,ypol,3)
+p=np.poly1d(f)
+print(p)
+```
+
+E multidimensional (que conta com normalização no fluxo!)
+```{python}
+xdata=df[['horsepower','curb-weight','engine-size','highway-mpg']]
+ydata=df['price']
+
+from sklearn.preprocessing import PolynomialFeatures
+pr=PolynomialFeatures(degree=2,include_bias=False)
+x_polly=pr.fit_transform(xdata[['horsepower','curb-weight']])
+
+from sklearn.preprocessing import StandardScaler
+SCALE=StandardScaler()
+SCALE.fit(xdata[['horsepower','curb-weight']])
+x_scale=SCALE.transform(xdata[['horsepower','curb-weight']])
+```
+
+# Com pipelines! Mas tá com zica!
+```{python,eval=F}
+Input=[('scale',StandardScaler()),('polynomial',PolynomialFeatures(degree=2)),('mode',LinearRegression())]
+pipe=Pipeline(Input)
+Pipe.fit(df[['horsepower','curb-weight','engine-size','highway-mpg']],y)
+y_hat=Pipe.predict(x[['horsepower','curb-weight','engine-size','highway-mpg']])
+```
+
+# Avaliação Numérica dos Modelos
+Mean Squared Error $(MSR)$
+R-Squared $(R^2)$, r-quadrado ou coeficiente de determinação
+$$R^2 = \left ( 1 - \frac{MSE_{\overline{y}}}{MSE_{\hat{y}}} \right ) $$
+```{python}
+from sklearn.metrics import mean_squared_error
+mean_squared_error(y,y_hat) #MSE
+lm.fit(df[['highway-mpg']],df['price']) 
+lm.score(df[['highway-mpg']],df['price']) #R2
+```
