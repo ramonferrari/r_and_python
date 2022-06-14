@@ -231,6 +231,11 @@ min(lista)
 max(lista)
 lista.append(6)
 lista.count(5)
+lista.index(1)
+lista.insert(posicao,elemento)
+lista.reverse
+lista.remove(5)
+lista.sort()
 ```
 Criando uma lista vazia, para incremento posterior!
 ```{python}
