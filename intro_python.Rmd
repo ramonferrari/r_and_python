@@ -58,6 +58,7 @@ filho1, filho2, filho3 = "Doug", 'Oliver', 'Savana' # Podemos usar aspas simples
 print(filho3)
 meus_filhos = "Meus filhos são: " + filho1 + ", " + filho2 + " e " + filho3 + "!"
 print(meus_filhos)
+len(meus_filhos)
 ```
 
 ## Métodos/atributos/funções para strings
@@ -115,6 +116,7 @@ type(2)
 type(3.14)
 float(2)
 int(3.14)
+type("tudo bem?")
 ```
 ## Operações com números
 No Python, temos dois tipos principais: inteiro e real.
