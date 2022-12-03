@@ -101,6 +101,7 @@ type(2)
 type(3.14)
 float(2)
 int(3.14)
+type("tudo bem?")
 ```
 
 ## Operações com números
