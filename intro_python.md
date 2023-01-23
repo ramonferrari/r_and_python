@@ -26,6 +26,12 @@ print(Oi)
 print("Oi = ",Oi)
 ```
 
+Use input() para entrar com dados como uma variável. 
+``` python
+Oi=input("Entre com o numero")
+print(Oi)
+```
+
 ## Indentação ou recuo
 
 Indentacao é muito importante em Python.
