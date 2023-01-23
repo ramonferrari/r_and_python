@@ -16,6 +16,16 @@ Use \# para comentar o código:
 # (Muito útil para comentar grandes blocos de código rapidamente)
 ```
 
+## Print e Input
+
+Use print() para imprimir strings, variáveis, ou combinações delas. 
+``` python
+Oi=10
+print("Oi")
+print(Oi)
+print("Oi = ",Oi)
+```
+
 ## Indentação ou recuo
 
 Indentacao é muito importante em Python.
