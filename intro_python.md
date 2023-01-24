@@ -1,7 +1,7 @@
 Códigos em R e Python
 ================
 Ramon Moreno Ferrari em
-14/06/2022
+24/01/2023
 
 ------------------------------------------------------------------------
 
@@ -18,7 +18,8 @@ Use \# para comentar o código:
 
 ## Print e Input
 
-Use print() para imprimir strings, variáveis, ou combinações delas. 
+Use print() para imprimir strings, variáveis, ou combinações delas.
+
 ``` python
 Oi=10
 print("Oi")
@@ -26,7 +27,8 @@ print(Oi)
 print("Oi = ",Oi)
 ```
 
-Use input() para entrar com dados como uma variável. 
+Use input() para entrar com dados como uma variável.
+
 ``` python
 Oi=input("Entre com o numero")
 print(Oi)
@@ -53,6 +55,7 @@ filho1, filho2, filho3 = "Doug", 'Oliver', 'Savana' # Podemos usar aspas simples
 print(filho3)
 meus_filhos = "Meus filhos são: " + filho1 + ", " + filho2 + " e " + filho3 + "!"
 print(meus_filhos)
+len(meus_filhos)
 ```
 
 ## Métodos/atributos/funções para strings
@@ -309,7 +312,7 @@ plt.title("exemplo de plot")
 plt.show()
 ```
 
-![](intro_python_files/figure-gfm/unnamed-chunk-31-1.png)<!-- -->
+<img src="intro_python_files/figure-gfm/unnamed-chunk-31-1.png" width="672" />
 
 ## Sobre Rmd
 
