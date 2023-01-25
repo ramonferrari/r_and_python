@@ -66,6 +66,17 @@ if(True):
   print("nivel 2") # nível 2
 ```
 
+## Criando funções
+Use "def():" e atenção a identação! 
+```{python,include=T}
+def bomdia(nome,pet):
+  print("Bem vindo, ",nome)
+  print("Você é o pai do ",pet,"!")
+```
+```{python,eval=T}
+bomdia("Ramon","Doug")
+```
+
 ## Operações com strings
 Atribuição múltipla é possível:
 ```{python,eval=F}

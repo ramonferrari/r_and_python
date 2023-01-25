@@ -1,7 +1,7 @@
 Códigos em R e Python
 ================
 Ramon Moreno Ferrari em
-24/01/2023
+25/01/2023
 
 ------------------------------------------------------------------------
 
@@ -45,6 +45,23 @@ print("nivel 1") # nível 1
 if(True):
   print("nivel 2") # nível 2
 ```
+
+## Criando funções
+
+Use “def():” e atenção a identação!
+
+``` python
+def bomdia(nome,pet):
+  print("Bem vindo, ",nome)
+  print("Você é o pai do ",pet,"!")
+```
+
+``` python
+bomdia("Ramon","Doug")
+```
+
+    ## Bem vindo,  Ramon
+    ## Você é o pai do  Doug !
 
 ## Operações com strings
 
@@ -312,7 +329,7 @@ plt.title("exemplo de plot")
 plt.show()
 ```
 
-<img src="intro_python_files/figure-gfm/unnamed-chunk-31-1.png" width="672" />
+<img src="intro_python_files/figure-gfm/unnamed-chunk-33-1.png" width="672" />
 
 ## Sobre Rmd
 
